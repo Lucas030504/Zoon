@@ -1,0 +1,149 @@
+:root {
+    --color-white: ghostwhite;
+    --color-dark1: #111;
+    --color-dark2: rgba(9, 9, 9, 0.1);
+    --color-gold: goldenrod;
+}
+
+* {
+    /* isso é para os inputs, porque eles geralmente passam a margem da borda */
+    box-sizing: border-box;
+
+    border: none;
+}
+a {
+    text-decoration: none;
+}
+
+
+
+input, label {
+    /* cada um representa uma linha, não queremos um do lado do outro */
+    display: block;
+
+    width: 100%;
+}
+/* focus é quando clica */
+input:focus, label:focus {
+    /* tira a borda azul (?) */
+    outline: none;
+}
+
+
+
+/* form */
+#main-container {
+    width: 500px;
+    margin: 1.5rem auto;
+    background-color: var(--color-dark2);
+    border-radius: 10px;
+    padding: 25px;
+}
+form {
+    display: flex;
+
+    /* alinhar os elementos da forma que estamos adicionando */
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+}
+.full-box {
+    flex: 1 1 100%;
+    position: relative;
+}
+.half-box {
+    flex: 1 1 45%;
+    position: relative;
+}
+.spacing {
+    margin-right: 2.5%;
+}
+label {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 3px;
+}
+input {
+    border-bottom: 2px solid gray;
+    padding: 10px;
+    font-size: .9rem;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    transition: .5s;
+}
+input:focus {
+    border-bottom-color: var(--color-gold);
+}
+.two-boxes input[type=submit] {
+    display: inline-block;
+    background-color: var(--color-gold);
+    color: var(--color-dark1);
+    text-align: center;
+    font-size: 15px;
+    width: 48%;
+    /* margin: auto; */
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px;
+    margin-top: 10px;
+    border-bottom: none;
+}
+.two-boxes {
+    width: 100%;
+}
+.two-boxes a {
+    display: inline-block;
+    background-color: var(--color-dark1);
+    color: var(--color-white);
+    font-size: 15px;
+    width: 48%;
+    /* margin: auto; */
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+}
+.usuarios {
+    background-color: var(--color-dark2);
+    margin: 2rem 0 1rem .8rem;
+    width: 48%;
+    float: left;
+    border-radius: 1em;
+    padding: 1em;
+}
+.usuarios a {
+    margin-right: 1rem;
+    background-color: var(--color-gold);
+    color: var(--color-dark1);
+    padding: 5px;
+    border-radius: 5px;
+}
+.usuarios p {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+
+
+/* responsividade */
+@media screen and (max-width: 850px) {
+    .usuarios {
+        width: 97%;
+    }
+}
+@media screen and (max-width: 650px) {
+    #main-container {
+        width: 400px;
+    }
+    .half-box {
+        flex: 1 1 100%;
+    }
+    .spacing {
+        margin-right: 0;
+    }
+}
+@media screen and (max-width: 450px) {
+    #main-container {
+        width: 250px;
+    }
+}

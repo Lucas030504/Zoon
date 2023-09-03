@@ -1,0 +1,557 @@
+/* barra de scroll */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: white;
+}
+::-webkit-scrollbar-thumb {
+    background: silver;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: gray;
+}
+
+
+
+/* paleta de cores */
+:root {
+    --color-white: ghostwhite;
+    --color-dark1: #111;
+    --color-dark2: rgba(10, 10, 10, 0.1);
+    --color-gold: goldenrod;
+}
+
+
+
+/* configurações de todo conteúdo */
+* {
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+    font-family: system-ui, sans-serif;
+}
+
+
+
+/* configurações de cabeçalho */
+.logo-header a {
+    font-size: 2rem;
+    color: var(--color-dark1);
+    text-decoration: none;
+}
+header,
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+header {
+    background-color: var(--color-gold);
+    height: 4rem;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+nav {
+    /* gap atribui um espaçamento aos elementos */
+    gap: 1rem;
+}
+nav a {
+    text-decoration: none;
+    color: var(--color-dark1);
+    font-weight: bold;
+    font-size: large;
+    transition: .5s;
+}
+.active:hover {
+    background-color: var(--color-dark2);
+    padding: 5px;
+    border-radius: 10px;
+}
+#saudacoes {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+/* botão de menu responsivo */
+.btn-icon-header {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+.btn-hamburger {
+    color: var(--color-dark1);
+}
+.btn-x {
+    color: var(--color-white);
+}
+
+
+
+/* configurações gerais do conteúdo principal */
+main {
+    min-height: 25rem;
+    width: 1000px;
+    margin: 0 auto;
+}
+main a {
+    text-decoration: none;
+}
+section {
+    margin: 1rem 0 5rem;
+    background-color: var(--color-dark2);
+    padding: 1rem;
+    border-radius: 1rem;
+}
+h1 {
+    font-size: 2rem;
+    border-bottom: 2px solid var(--color-gold);
+    margin: 1rem .5rem 2rem;
+    clear: both;
+    text-align: left;
+}
+
+
+
+/* classe para elementos ficarem lado a lado */
+.row {
+    display: flex;
+}
+
+
+
+/* estrutura de card principal */
+.card-principal {
+    width: 60%;
+    height: 24rem;
+    margin: .25rem;
+    /* box-shadow: 1px 1px 10px silver; */
+    position: relative;
+    transition: .5s;
+}
+.card-principal:hover {
+    transform: translateY(-5px);
+}
+.card-conteudo-principal {
+    color: var(--color-white);
+    text-shadow: 1px 1px 10px var(--color-dark1);
+}
+.titulo-card-principal {
+    text-align: center;
+    font-size: 1.6rem;
+    position: absolute;
+    top: .5rem;
+    left: .5rem;
+    right: .5rem;
+}
+.subtitulo-card-principal {
+    text-align: center;
+    font-size: 1.2rem;
+    position: absolute;
+    bottom: 1rem;
+    left: .5rem;
+    right: .5rem;
+}
+
+
+
+/* estrutura de cards laterais */
+.cards-laterais {
+    width: 39%;
+    height: 24rem;
+    margin: .25rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.card-lateral {
+    width: 100%;
+    height: 50%;
+    /* box-shadow: 1px 1px 10px silver; */
+    position: relative;
+    transition: .5s;
+}
+.card-lateral:hover {
+    transform: translateY(-5px);
+}
+.card-imagem-lateral {
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+}
+.card-conteudo-lateral {
+    color: var(--color-white);
+    text-shadow: 1px 1px 10px var(--color-dark1);
+}
+.titulo-card-lateral {
+    text-align: center;
+    font-size: 1.4rem;
+    position: absolute;
+    top: .5rem;
+    left: .5rem;
+    right: .5rem;
+}
+.subtitulo-card-lateral {
+    text-align: center;
+    font-size: 1rem;
+    position: absolute;
+    bottom: 1rem;
+    left: .5rem;
+    right: .5rem;
+}
+
+
+
+/* estrutura de cards de baixo */
+.cards-abaixo {
+    width: 99%;
+    height: 12rem;
+    margin: .25rem auto;
+    gap: .5rem;
+}
+.card-abaixo {
+    width: 33%;
+    height: 100%;
+    /* box-shadow: 1px 1px 10px silver; */
+    position: relative;
+    transition: .5s;
+}
+.card-abaixo:hover {
+    transform: translateY(-5px);
+}
+.card-imagem-abaixo {
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+}
+.card-conteudo-abaixo {
+    color: var(--color-white);
+    text-shadow: 1px 1px 10px var(--color-dark1);
+}
+.titulo-card-abaixo {
+    text-align: center;
+    font-size: 1.4rem;
+    position: absolute;
+    top: .5rem;
+    left: .5rem;
+    right: .5rem;
+}
+.subtitulo-card-abaixo {
+    text-align: center;
+    font-size: 1rem;
+    position: absolute;
+    bottom: 1rem;
+    left: .5rem;
+    right: .5rem;
+}
+
+
+
+/* imagens de cards principais */
+/* notícia */
+.noticia-imagem-principal-1 {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(70,70,70,.7), rgba(50,50,50,.5)), url("https://www.cnnbrasil.com.br/wp-content/uploads/sites/12/2022/03/analise_covid_19_coronavirus_laboratorio_ilustrativa-3.jpg?w=350&h=195&crop=1");
+    background-position: center;
+    background-size: cover;
+    border-radius: 1rem;
+}
+/* zoonose */
+.zoonose-imagem-principal-1 {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(70,70,70,.7), rgba(50,50,50,.5)), url("https://s5.static.brasilescola.uol.com.br/be/conteudo/images/aedes-aegypti.jpg");
+    background-position: center;
+    background-size: cover;
+    border-radius: 1rem;
+}
+/* clima */
+.clima-imagem-principal-1 {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(70,70,70,.7), rgba(50,50,50,.5)), url("https://img.freepik.com/vetores-gratis/gradientes-de-icones-de-clima-para-aplicativos_79603-1767.jpg");
+    background-position: center;
+    background-size: cover;
+    border-radius: 1rem;
+}
+
+
+
+/* imagens de cards laterais */
+/* notícia */
+.noticia-imagem-lateral-1 {
+    background: linear-gradient(rgba(70,70,70,.7), rgba(50,50,50,.5)), url("https://www.uninter.com/noticias/wp-content/uploads/2022/08/noticias_cow-g4bf66ffec_1920-1024x681.jpg");
+    background-position: center;
+    background-size: cover;
+}
+.noticia-imagem-lateral-2 {
+    background: linear-gradient(rgba(70,70,70,.7), rgba(50,50,50,.5)), url("https://conteudo.imguol.com.br/c/entretenimento/c4/2020/05/10/animais-no-pasto-zoonoses-1589119720981_v2_900x506.jpg.webp");
+    background-position: center;
+    background-size: cover;
+}
+/* zoonose */
+.zoonose-imagem-lateral-1 {
+    background: linear-gradient(rgba(70,70,70,.7), rgba(50,50,50,.5)), url("https://dive.sc.gov.br/images/doencas%20e%20agravos/Doen%C3%A7as%20Definitivas/chikungunya.png");
+    background-position: center;
+    background-size: cover;
+}
+.zoonose-imagem-lateral-2 {
+    background: linear-gradient(rgba(70,70,70,.7), rgba(50,50,50,.5)), url("https://conteudo.imguol.com.br/c/entretenimento/b0/2022/02/24/zika-virus-1645727091617_v2_4x3.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+
+
+/* imagens de cards de baixo */
+/* notícia */
+.noticia-imagem-abaixo-1 {
+    background: linear-gradient(rgba(70,70,70,.7), rgba(50,50,50,.5)), url("https://static.poder360.com.br/2022/08/macaco-848x477.jpg");
+    background-position: center;
+    background-size: cover;
+}
+.noticia-imagem-abaixo-2 {
+    background: linear-gradient(rgba(70,70,70,.7), rgba(50,50,50,.5)), url("https://s2.glbimg.com/m00In9etHOnHS9TkU2D1WNgXALo=/0x0:4752x3168/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2022/B/9/eTM5x5QvOfHDYatFCC2Q/52223001685-93c9c79f64-o.jpg");
+    background-position: center;
+    background-size: cover;
+}
+.noticia-imagem-abaixo-3 {
+    background: linear-gradient(rgba(70,70,70,.7), rgba(50,50,50,.5)), url("https://sp-ao.shortpixel.ai/client/to_webp,q_lossy,ret_img,w_770/https://valparaisodegoias.go.gov.br/wp-content/uploads/2021/07/29082017125510.jpg");
+    background-position: center;
+    background-size: cover;
+}
+/* zoonose */
+.zoonose-imagem-abaixo-1 {
+    background: linear-gradient(rgba(70,70,70,.7), rgba(50,50,50,.5)), url("https://www.santos.sp.gov.br/static/files_www/styles/newspagesimples/public/field/image/download_11.jpg?itok=xcVAgZv-");
+    background-position: center;
+    background-size: cover;
+}
+.zoonose-imagem-abaixo-2 {
+    background: linear-gradient(rgba(70,70,70,.7), rgba(50,50,50,.5)), url("https://www.educarsaude.com/wp-content/uploads/2018/04/O-que-%C3%A9-Leptospirose-sintomas-cura-tratamento-preven%C3%A7%C3%A3o-e-mais.png");
+    background-position: center;
+    background-size: cover;
+}
+.zoonose-imagem-abaixo-3 {
+    background: linear-gradient(rgba(70,70,70,.7), rgba(50,50,50,.5)), url("https://dive.sc.gov.br/images/doencas%20e%20agravos/Doen%C3%A7as%20Definitivas/Febre%20Amarela.png");
+    background-position: center;
+    background-size: cover;
+}
+
+
+
+/* mapa */
+#mapa-main {
+    border: 0;
+    border-radius: 1rem;
+    width: 60%;
+    height: 24rem;
+}
+
+
+
+/* rodapé */
+footer {
+    clear: both;
+    background-color: var(--color-dark1);
+    width: 100%;
+    min-height: 15rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.footer-final {
+    width: 70%;
+    color: var(--color-white);
+    padding: 0 0 1.5rem 1rem;
+}
+/* .footer-final p {
+    padding-left: 1rem;
+} */
+.contatos {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 0 0 0;
+}
+.contatos ul, li {
+    margin-left: 1rem;
+    list-style: none;
+    margin-bottom: .5rem;
+    /* display: flex;
+    flex-direction: column;
+    gap: .5rem; */
+}
+footer a, footer p {
+    /* text-decoration: none; */
+    color: var(--color-white);
+    font-size: 1rem;
+}
+.bi-mailbox2, .bi-telephone-fill, .bi-geo-alt-fill, .bi-clock-fill {
+    color: var(--color-white);
+    float: left;
+    position: relative;
+    right: .5rem;
+}
+
+
+
+/* ativando menu responsivo */
+@media screen and (max-width: 450px) {
+    .btn-icon-header {
+        display: block;
+    }
+    nav {
+        position: absolute;
+        flex-direction: column;
+        top: 0;
+        background-color: var(--color-dark1);
+        height: 100%;
+        width: 30vw;
+        padding: 1em;
+        animation-duration: 1s;
+        margin-left: -100vw;
+        z-index: 1;
+    }
+    nav a {
+        color: var(--color-white);
+    }
+}
+/* animação */
+@keyframes showSidebar {
+    from {
+        margin-left: -700vw;
+    }
+    to {
+        margin-left: -7vw;
+    }
+}
+@keyframes hideSidebar {
+    from {
+        margin-left: -7vw;
+    }
+    to {
+        margin-left: -700vw;
+    }
+}
+
+
+
+/* responsividade */
+@media screen and (max-width: 1050px) {
+    main {
+        width: 800px;
+    }
+}
+@media screen and (max-width: 910px) {
+    .footer-final {
+        width: 65%;
+    }
+    .contatos {
+        width: 30%;
+    }
+}
+@media screen and (max-width: 850px) {
+    main {
+        width: 600px;
+    }
+    .cards-abaixo {
+        display: block;
+        height: 24rem;
+    }
+    .card-abaixo {
+        width: 48.5%;
+        height: 48%;
+        margin: 0 .25rem .5rem;
+        float: left;
+    }
+}
+@media screen and (max-width: 760px) {
+    .footer-final {
+        width: 60%;
+    }
+    .contatos {
+        width: 35%;
+    }
+}
+@media screen and (max-width: 650px) {
+    main {
+        width: 400px;
+    }
+    .row {
+        flex-direction: column;
+    }
+    .card-principal {
+        width: 99%;
+        height: 12rem;
+    }
+    .cards-laterais {
+        width: 99%;
+    }
+    .cards-abaixo {
+        width: 99%;
+        margin: .25rem;
+        height: 37rem;
+        display: flex;
+    }
+    .card-abaixo {
+        width: 100%;
+        height: 12rem;
+        margin: 0;
+    }
+    #mapa-main {
+        width: 100%;
+        height: 12rem;
+    }
+    .footer-final {
+        width: 55%;
+    }
+    .contatos {
+        width: 40%;
+    }
+}
+@media screen and (max-width: 570px) {
+    .footer-final {
+        width: 50%;
+    }
+    .contatos {
+        width: 45%;
+    }
+}
+@media screen and (max-width: 505px) {
+    .footer-final {
+        width: 45%;
+    }
+    .contatos {
+        width: 50%;
+    }
+}
+@media screen and (max-width: 455px) {
+    main {
+        width: 280px;
+    }
+    .card-principal {
+        height: 14rem;
+    }
+    .cards-laterais {
+        height: 28rem;
+    }
+    .cards-abaixo {
+        height: 42rem;
+    }
+    .card-abaixo {
+        height: 14rem;
+    }
+    .footer-final {
+        width: 100%;
+    }
+    .contatos {
+        width: 100%;
+    }
+}

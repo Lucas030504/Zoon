@@ -1,0 +1,102 @@
+/* paleta de cores */
+:root {
+    --color-white: ghostwhite;
+    --color-dark1: #111;
+    --color-dark2: rgba(9, 9, 9, 0.1);
+    --color-gold: goldenrod;
+}
+
+
+/* API */
+.container {
+    text-align: center;
+    padding: 2rem;
+    margin: 30px auto;
+    width: 400px;
+    border-radius: 1rem;
+    background-color: silver;
+}
+.container h2 {
+    text-align: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+.form-input-container {
+    width: 250px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+#city-input {
+    margin: 1rem 0;
+    padding: .3rem;
+    border-style: none;
+    border-radius: .5rem;
+}
+#search {
+    padding: .3rem;
+    border-style: none;
+    border-radius: .5rem;
+}
+.cidade-pais h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    margin: 1rem auto;
+    width: fit-content;
+}
+/* tamanho da bandeira */
+#country {
+    height: 30px;
+}
+/* onde mostra o estado atual do tempo */
+#description-container {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#description-container {
+    width: fit-content;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+}
+#description {
+    text-transform: capitalize;
+}
+/* umidade e velocidade do vento */
+#details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    width: fit-content;
+    margin: 0 auto;
+    background-color: var(--color-dark2);
+    padding: .5rem;
+    border-radius: .5rem;
+}
+
+
+
+/* responsividade */
+@media screen and (max-width: 650px) {
+    .container {
+        width: 300px;
+    }
+    #details-container {
+        gap: .5rem;
+    }
+}
+@media screen and (max-width: 450px) {
+    .container {
+        width: 200px;
+    }
+    .form-input-container {
+        width: 200px;
+    }
+}

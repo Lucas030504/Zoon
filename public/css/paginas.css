@@ -1,0 +1,99 @@
+/* paleta de cores */
+:root {
+    --color-white: ghostwhite;
+    --color-dark1: #111;
+    --color-dark2: rgba(9, 9, 9, 0.1);
+    --color-gold: goldenrod;
+}
+
+/* páginas de notícias e zoonoses */
+section ul {
+    margin: 0 0 1.5rem 3rem;
+}
+section li {
+    list-style-type: disc;
+}
+
+.titulo-ancora {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    width: 100%;
+}
+.titulo-ancora h1 {
+    width: 80%;
+}
+.titulo-ancora ul {
+    background-color: var(--color-dark2);
+    border-radius: .5rem;
+    padding: .7rem 1rem .3rem 0;
+    margin: 1rem auto;
+    width: 20%;
+}
+.titulo-ancora ul li {
+    text-align: center;
+    list-style: none;
+}
+.titulo-ancora a {
+    color: var(--color-dark1);
+    font-weight: bold;
+}
+.titulo-ancora a:hover {
+    border-bottom: 2px solid var(--color-gold);
+}
+.lista-ancoras {
+    width: 222px;
+    background-color: var(--color-dark2);
+    border-radius: .5rem;
+    margin: 0 auto 1rem;
+    padding: 1.4rem 1.4rem .1rem 0;
+    position: absolute;
+    right: 0px;
+}
+.lista-ancoras a {
+    color: var(--color-dark1);
+    font-weight: bold;
+}
+.lista-ancoras a:hover {
+    border-bottom: 2px solid var(--color-gold);
+}
+
+.imagem-principal img {
+    width: 50%;
+    float: left;
+    margin: 0 1rem 0 .5rem;
+    border-radius: 1rem;
+}
+.conteudo-principal {
+    margin: 0 .5rem;
+}
+.conteudo-principal p {
+    margin-bottom: 1.5rem;
+}
+.conteudo-principal h2 {
+    margin-bottom: 1.5rem;
+}
+
+
+
+/* responsividade */
+@media screen and (max-width: 455px) {
+    .titulo-ancora {
+        flex-direction: column;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    .titulo-ancora ul {
+        margin: 0 auto 2rem;
+        width: 90%;
+    }
+    .imagem-principal img {
+        width: 93%;
+        float: none;
+    }
+    .conteudo-principal h2 {
+        margin-top: 1.5rem;
+    }
+}
