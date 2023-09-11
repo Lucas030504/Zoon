@@ -58,8 +58,14 @@ router.get('/zoonose-abaixo-3', async (req, res) => {
 router.get('/denuncia', async (req, res) => {
     res.render('denuncia')
 })
-router.get('/denunciar-an', async (req, res) => {
-    res.render('denunciar-an')
+router.get('/den-motivo', async (req, res) => {
+    res.render('den-motivo')
+})
+router.get('/den-relato', async (req, res) => {
+    res.render('den-relato')
+})
+router.get('/den-endereco', async (req, res) => {
+    res.render('den-endereco')
 })
 
 // teste de localização

@@ -6,19 +6,20 @@
     <title>Zoon</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/autenticacao.css">
+    <link rel="stylesheet" href="/css/denuncia.css">
     <script src="/js/script.js" defer></script>
 </head>
 <body>
     <!-- cabeçalho -->
     <header id="header">
-        <button class="btn-icon-header btn-hamburger" onclick="toggleSidebar()">
+        <!-- <button class="btn-icon-header btn-hamburger" onclick="toggleSidebar()"> -->
             <!-- ícone de lista do site bootstrap icons -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list"
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list"
                 viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
-        </button>
+        </button> -->
 
         <!-- logo -->
         <div class="logo-header">
@@ -26,30 +27,58 @@
         </div>
 
         <!-- menu -->
-        <nav id="nav">
-            <button class="btn-icon-header btn-x" onclick="toggleSidebar()">
+        <!-- <nav id="nav">
+            <button class="btn-icon-header btn-x" onclick="toggleSidebar()"> -->
                 <!-- ícone x no site bootstrap icons -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x"
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x"
                     viewBox="0 0 16 16">
                     <path
                         d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
                 </svg>
-            </button>
+            </button> -->
 
             <!-- links do menu -->
-            <a href="/path/cadastrar" class="active">Cadastrar</a>
-        </nav>
+            <!-- <a href="/path/cadastrar" class="active">Cadastrar</a>
+        </nav> -->
     </header>
 
 
 
     <main>
         <section>
-            <h1>Denuncie como:</h1>
+            <h1>Denúncia anônima:</h1>
+            <div id="passos">
+                <div class="linha"></div>
+                <div class="passo">
+                    <div class="inativo">
+                        <p>Motivo</p>
+                    </div>
+                </div>
+                <div class="passo">
+                    <div class="ativo">
+                        <p>Relato</p>
+                    </div>
+                </div>
+                <div class="passo">
+                    <div class="inativo">
+                        <p>Endereço</p>
+                    </div>
+                </div>
+                <div class="passo">
+                    <div class="inativo">
+                        <p>Conclusão</p>
+                    </div>
+                </div>
+            </div>
+
             <div id="main-container">
+                <div>
+                    <h2>Relato</h2>
+                    <textarea type="text" placeholder="Nos conte o ocorrido"></textarea>
+                </div>
                 <div class="two-boxes">
-                    <a class="spacing" style="background-color: black;" href="/path/den-motivo">Anônimo</a>
-                    <a style="background-color: goldenrod; color: black;" href="/path/denunciar-log">Logado</a>
+                    <a class="spacing" href="/path/den-motivo">Voltar</a>
+                    <a style="background-color: goldenrod; color: black;" href="/path/den-endereco">Próximo</a>
                 </div>
             </div>
         </section>

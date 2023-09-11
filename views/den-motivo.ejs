@@ -6,6 +6,7 @@
     <title>Zoon</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/autenticacao.css">
+    <link rel="stylesheet" href="/css/denuncia.css">
     <script src="/js/script.js" defer></script>
 </head>
 <body>
@@ -46,14 +47,47 @@
     <main>
         <section>
             <h1>Denúncia anônima:</h1>
+            <div id="passos">
+                <div class="linha"></div>
+                <div class="passo">
+                    <div class="ativo">
+                        <p>Motivo</p>
+                    </div>
+                </div>
+                <div class="passo">
+                    <div class="inativo">
+                        <p>Relato</p>
+                    </div>
+                </div>
+                <div class="passo">
+                    <div class="inativo">
+                        <p>Endereço</p>
+                    </div>
+                </div>
+                <div class="passo">
+                    <div class="inativo">
+                        <p>Conclusão</p>
+                    </div>
+                </div>
+            </div>
+
             <div id="main-container">
-                <div class="full-box">
-                    <label for="endereco">Endereço</label>
-                    <input type="text" name="endereco" id="endereco" placeholder="ex: SAIN, lote 4, Asa Norte">
+                <div>
+                    <h2>Motivo</h2>
+                    <select name="motivo" id="motivo">
+                        <option value="" disabled selected>Selecione</option>
+                        <option value="">A</option>
+                        <option value="">B</option>
+                        <option value="">C</option>
+                        <option value="">D</option>
+                        <option value="">E</option>
+                        <option value="">F</option>
+                        <option value="">G</option>
+                    </select>
                 </div>
                 <div class="two-boxes">
                     <a class="spacing" href="/">Cancelar</a>
-                    <a style="background-color: goldenrod; color: black;" href="/path/status">Enviar</a>
+                    <a style="background-color: goldenrod; color: black;" href="/path/den-relato">Próximo</a>
                 </div>
             </div>
         </section>
