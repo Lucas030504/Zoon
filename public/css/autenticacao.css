@@ -39,7 +39,7 @@ input:focus, label:focus {
     border-radius: 10px;
     padding: 25px;
 }
-form {
+#register-form {
     display: flex;
 
     /* alinhar os elementos da forma que estamos adicionando */
@@ -74,34 +74,38 @@ input {
 input:focus {
     border-bottom-color: var(--color-gold);
 }
-.two-boxes input[type=submit] {
-    display: inline-block;
+.btns {
+    display: block;
+    width: 100%;
+}
+.btns-action {
+    height: fit-content;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.btns-action a {
+    width: 48%;
+    background-color: var(--color-dark1);
+    color: var(--color-white);
+    font-size: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+}
+.btns-action input[type=submit] {
+    width: 48%;
     background-color: var(--color-gold);
     color: var(--color-dark1);
     text-align: center;
     font-size: 15px;
-    width: 48%;
-    /* margin: auto; */
     border-radius: 10px;
     cursor: pointer;
     padding: 10px;
     margin-top: 10px;
     border-bottom: none;
-}
-.two-boxes {
-    width: 100%;
-}
-.two-boxes a {
-    display: inline-block;
-    background-color: var(--color-dark1);
-    color: var(--color-white);
-    font-size: 15px;
-    width: 48%;
-    /* margin: auto; */
-    border-radius: 10px;
-    cursor: pointer;
-    padding: 10px;
-    text-align: center;
 }
 .usuarios {
     background-color: var(--color-dark2);

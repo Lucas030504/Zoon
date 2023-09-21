@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/autenticacao.css">
     <link rel="stylesheet" href="/css/denuncia.css">
     <script src="/js/script.js" defer></script>
+    <script src="/js/cep.js" defer></script>
 </head>
 <body>
     <!-- cabeçalho -->
@@ -50,22 +51,22 @@
             <div id="passos">
                 <div class="linha"></div>
                 <div class="passo">
+                    <div class="inativo">
+                        <a href="/path/den-motivo"><p>Motivo</p></a>
+                    </div>
+                </div>
+                <div class="passo">
+                    <div class="inativo">
+                        <a href="/path/den-relato"><p>Relato</p></a>
+                    </div>
+                </div>
+                <div class="passo">
+                    <div class="inativo">
+                        <a href="/path/den-endereco"><p>Endereço</p></a>
+                    </div>
+                </div>
+                <div class="passo">
                     <div class="ativo">
-                        <p>Motivo</p>
-                    </div>
-                </div>
-                <div class="passo">
-                    <div class="inativo">
-                        <p>Relato</p>
-                    </div>
-                </div>
-                <div class="passo">
-                    <div class="inativo">
-                        <p>Endereço</p>
-                    </div>
-                </div>
-                <div class="passo">
-                    <div class="inativo">
                         <p>Anexo</p>
                     </div>
                 </div>
@@ -77,25 +78,18 @@
             </div>
 
             <div id="main-container">
-                <div>
-                    <h2>Motivo</h2>
-                    <select name="motivo" id="motivo">
-                        <option value="" disabled selected>Selecione</option>
-                        <option value="">A</option>
-                        <option value="">B</option>
-                        <option value="">C</option>
-                        <option value="">D</option>
-                        <option value="">E</option>
-                        <option value="">F</option>
-                        <option value="">G</option>
-                    </select>
-                </div>
-                <div class="btns">
-                    <div class="btns-action">
-                        <a href="/">Cancelar</a>
-                        <a style="background-color: goldenrod; color: black;" href="/path/den-relato">Próximo</a>
+                <form id="den-form" class="container" method="post" action="/path/cadastrar">
+                    <h2>Anexo</h2>
+                    <div class="full-box">
+                        <input type="file" name="anexo" id="anexo" placeholder="Selecione um arquivo">
                     </div>
-                </div>
+                    <div class="btns">
+                        <div class="btns-action">
+                            <a href="/path/endereco">Voltar</a>
+                            <a style="background-color: goldenrod; color: black;" href="/path/den-conclusao">Próximo</a>
+                        </div>
+                    </div>
+                </form>
             </div>
         </section>
     </main>

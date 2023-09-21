@@ -51,7 +51,7 @@ header {
     background-color: var(--color-gold);
     height: 4rem;
     justify-content: space-between;
-    padding: 0 1rem;
+    padding: 0 2rem;
 }
 nav {
     /* gap atribui um espaçamento aos elementos */
@@ -62,11 +62,12 @@ nav a {
     color: var(--color-dark1);
     font-weight: bold;
     font-size: large;
-    transition: .5s;
+    transition: .3s;
 }
 .active:hover {
     background-color: var(--color-dark2);
-    padding: 5px;
+    padding: 10px;
+    margin: -10px;
     border-radius: 10px;
 }
 #saudacoes {

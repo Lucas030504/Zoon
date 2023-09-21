@@ -55,9 +55,6 @@ router.get('/zoonose-abaixo-3', async (req, res) => {
 })
 
 // denúncia
-router.get('/denuncia', async (req, res) => {
-    res.render('denuncia')
-})
 router.get('/den-motivo', async (req, res) => {
     res.render('den-motivo')
 })
@@ -67,6 +64,12 @@ router.get('/den-relato', async (req, res) => {
 router.get('/den-endereco', async (req, res) => {
     res.render('den-endereco')
 })
+router.get('/den-anexo', async (req, res) => {
+    res.render('den-anexo')
+})
+router.get('/den-conclusao', async (req, res) => {
+    res.render('den-conclusao')
+})
 
 // teste de localização
 router.get('/localizacao', async (req, res) => {
@@ -74,8 +77,6 @@ router.get('/localizacao', async (req, res) => {
 })
 
 
-
-// cadastro e login:
 
 // PRIVATE ROUTE - ROTA PRIVADA
 router.get('/usuario/:id', checkToken, async (req, res) => {
@@ -125,6 +126,14 @@ router.post("/cadastrar", async (req, res) => {
     let senha = req.body.senha
     let confSenha = req.body.confSenha
 
+    let date = new Date()
+    // getDate() pega o dia do mês
+    let dia = date.getDate()
+    // getDay() pega o dia da semana
+    let mes = date.getMonth()+1
+    let ano = date.getFullYear()
+    let data = `${dia}/${mes}/${ano}`
+
     if (!email) {
         return res.status(422).json({msg: 'O e-mail é obrigatório'})
     }
@@ -148,7 +157,8 @@ router.post("/cadastrar", async (req, res) => {
         tel,
         nome,
         sobrenome,
-        senha: senhaHash
+        senha: senhaHash,
+        data
     })
     await newPerson.save()
     // para evitar de ficar carregando infinito, enviamos o usuário para outra página
@@ -292,6 +302,7 @@ router.get('/deletar/:id', async (req, res) => {
 
 
 
+// login para efetuar denúncia
 router.get('/denunciar-log', async (req, res) => {
     res.render('denunciar-log')
 })
@@ -318,12 +329,59 @@ router.post('/denunciar-log', async(req, res) => {
     }
 
     try {
-        res.render('login-den', {user: user})
+        // res.render('login-den', {user: user})
+        res.render('/')
     } catch (error) {
         console.log(error)
         res.status(500).json({msg: 'Erro no servidor, tente novamente'})
     }
 })
+
+
+
+// login para ver status da denúncia
+router.get('/ver-den-log', async (req, res) => {
+    res.render('ver-den-log')
+})
+router.post('/ver-den-log', async(req, res) => {
+    let email = req.body.emailVerDen
+    let senha = req.body.senhaVerDen
+
+    // validações
+    if (!email) {
+        return res.status(422).json({msg: 'O e-mail é obrigatório'})
+    }
+    if (!senha) {
+        return res.status(422).json({msg: 'A senha é obrigatória'})
+    }
+
+    let user = await Person.findOne({email: email})
+    if (!user) {
+        return res.status(404).json({msg: 'Usuário não encontrado'})
+    }
+
+    let checkPassword = await bcrypt.compare(senha, user.senha)
+    if (!checkPassword) {
+        return res.status(404).json({msg: 'Senha inválida'})
+    }
+
+    try {
+        // res.render('login-den', {user: user})
+        res.render('/path/ver-denuncias') // aqui vamos passar com as denúncias
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({msg: 'Erro no servidor, tente novamente'})
+    }
+})
+
+// router.get("/ver-denuncias", async (req, res) => {
+//     try {
+//         let denuncias = await Denuncia.find()
+//         res.render('ver-denuncias', {denunciasList: denuncias})
+//     } catch (err) {
+//         console.log(err)
+//     }
+// })
 
 
 

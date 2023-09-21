@@ -5,7 +5,8 @@ const Person = mongoose.model('Person', {
     tel: String,
     nome: String,
     sobrenome: String,
-    senha: String
+    senha: String,
+    data: String
 })
 
 // exportando o model

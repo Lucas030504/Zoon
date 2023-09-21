@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/autenticacao.css">
     <link rel="stylesheet" href="/css/denuncia.css">
     <script src="/js/script.js" defer></script>
+    <script src="/js/cep.js" defer></script>
 </head>
 <body>
     <!-- cabeçalho -->
@@ -51,17 +52,22 @@
                 <div class="linha"></div>
                 <div class="passo">
                     <div class="inativo">
-                        <p>Motivo</p>
+                        <a href="/path/den-motivo"><p>Motivo</p></a>
                     </div>
                 </div>
                 <div class="passo">
                     <div class="inativo">
-                        <p>Relato</p>
+                        <a href="/path/den-relato"><p>Relato</p></a>
                     </div>
                 </div>
                 <div class="passo">
                     <div class="ativo">
                         <p>Endereço</p>
+                    </div>
+                </div>
+                <div class="passo">
+                    <div class="inativo">
+                        <p>Anexo</p>
                     </div>
                 </div>
                 <div class="passo">
@@ -72,19 +78,50 @@
             </div>
 
             <div id="main-container">
-                <div>
                     <h2>Endereço</h2>
-                    <input type="text" placeholder="Digite o CEP">
-                </div>
-                <div class="separador">
-                    <div class="linha-ou"></div>
-                    <p class="ou">OU</p>
-                    <div class="linha-ou"></div>
-                </div>
-                <div class="two-boxes">
-                    <a class="spacing" href="/path/den-relato">Voltar</a>
-                    <a style="background-color: goldenrod; color: black;" href="/path/denunciar-relato">Próximo</a>
-                </div>
+                    <div class="full-box">
+                        <input type="text" name="endereco" id="endereco" placeholder="Digite o CEP">
+                    </div>
+
+                    <div class="separador">
+                        <div class="linha-ou"></div>
+                        <p class="ou">OU</p>
+                        <div class="linha-ou"></div>
+                    </div>
+
+                    <div class="preenche">
+                        <div class="half-box spacing">
+                            <label for="estado">Estado</label>
+                            <input type="text" name="estado" id="estado" placeholder="">
+                        </div>
+                        <div class="half-box">
+                            <label for="cidade">Cidade</label>
+                            <input type="text" name="cidade" id="cidade" placeholder="">
+                        </div>
+                        <div class="half-box spacing">
+                            <label for="bairro">Bairro</label>
+                            <input type="text" name="bairro" id="bairro" placeholder="">
+                        </div>
+                        <div class="half-box">
+                            <label for="rua">Rua</label>
+                            <input type="text" name="rua" id="rua" placeholder="">
+                        </div>
+                        <div class="half-box spacing">
+                            <label for="complemento">Complemento</label>
+                            <input type="text" name="complemento" id="complemento" placeholder="">
+                        </div>
+                        <div class="half-box">
+                            <label for="numero-moradia">Número</label>
+                            <input type="text" name="numero-moradia" id="numero-moradia" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="btns">
+                        <div class="btns-action">
+                            <a href="/path/relato">Voltar</a>
+                            <a style="background-color: goldenrod; color: black;" href="/path/den-anexo">Próximo</a>
+                        </div>
+                    </div>
             </div>
         </section>
     </main>
