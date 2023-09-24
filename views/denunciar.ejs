@@ -8,19 +8,18 @@
     <link rel="stylesheet" href="/css/autenticacao.css">
     <link rel="stylesheet" href="/css/denuncia.css">
     <script src="/js/script.js" defer></script>
-    <script src="/js/cep.js" defer></script>
 </head>
 <body>
     <!-- cabeçalho -->
     <header id="header">
-        <!-- <button class="btn-icon-header btn-hamburger" onclick="toggleSidebar()"> -->
+        <button class="btn-icon-header btn-hamburger" onclick="toggleSidebar()">
             <!-- ícone de lista do site bootstrap icons -->
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list"
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list"
                 viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
             </svg>
-        </button> -->
+        </button>
 
         <!-- logo -->
         <div class="logo-header">
@@ -28,67 +27,62 @@
         </div>
 
         <!-- menu -->
-        <!-- <nav id="nav">
-            <button class="btn-icon-header btn-x" onclick="toggleSidebar()"> -->
+        <nav id="nav">
+            <button class="btn-icon-header btn-x" onclick="toggleSidebar()">
                 <!-- ícone x no site bootstrap icons -->
-                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x"
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x"
                     viewBox="0 0 16 16">
                     <path
                         d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
                 </svg>
-            </button> -->
+            </button>
 
             <!-- links do menu -->
-            <!-- <a href="/path/cadastrar" class="active">Cadastrar</a>
-        </nav> -->
+            <a href="/path/cadastrar" class="active">Cadastrar</a>
+        </nav>
     </header>
 
 
 
     <main>
         <section>
-            <h1>Denúncia anônima:</h1>
-            <div id="passos">
-                <div class="linha"></div>
-                <div class="passo">
-                    <div class="inativo">
-                        <a href="/path/den-motivo"><p>Motivo</p></a>
-                    </div>
-                </div>
-                <div class="passo">
-                    <div class="inativo">
-                        <a href="/path/den-relato"><p>Relato</p></a>
-                    </div>
-                </div>
-                <div class="passo">
-                    <div class="ativo">
-                        <p>Endereço</p>
-                    </div>
-                </div>
-                <div class="passo">
-                    <div class="inativo">
-                        <p>Anexo</p>
-                    </div>
-                </div>
-                <div class="passo">
-                    <div class="inativo">
-                        <p>Conclusão</p>
-                    </div>
-                </div>
-            </div>
-
+            <h1>Registre sua denúncia</h1>
             <div id="main-container">
-                    <h2>Endereço</h2>
+                <form id="den-form" class="container" method="post" action="/path/den-log">
+                    <!-- motivo -->
                     <div class="full-box">
-                        <input type="text" name="endereco" id="endereco" placeholder="Digite o CEP">
+                        <label for="motivo">Motivo</label>
+                        <select name="motivo" id="motivo" required>
+                            <option value="" disabled selected>Selecione</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="Outro">Outro</option>
+                        </select>
                     </div>
-
+                    
+                    <!-- relato -->
+                    <div class="full-box">
+                        <label for="relato">Relato</label>
+                        <textarea type="text" placeholder="Nos conte o ocorrido" required></textarea>
+                    </div>
+                    
+                    <!-- endereço -->
+                    <div class="separador">
+                        <div class="linha-ou"></div>
+                    </div>
+                    <div class="full-box">
+                        <label for="cep">CEP</label>
+                        <input type="text" name="cep" id="cep" placeholder="Digite o CEP">
+                    </div>
                     <div class="separador">
                         <div class="linha-ou"></div>
                         <p class="ou">OU</p>
                         <div class="linha-ou"></div>
                     </div>
-
                     <div class="endereco">
                         <div class="half-box spacing">
                             <label for="estado">Estado</label>
@@ -111,17 +105,62 @@
                             <input type="text" name="complemento" id="complemento" placeholder="">
                         </div>
                         <div class="half-box">
-                            <label for="numero-moradia">Número</label>
-                            <input type="text" name="numero-moradia" id="numero-moradia" placeholder="">
+                            <label for="nmr-moradia">Número</label>
+                            <input type="text" name="nmr-moradia" id="nmr-moradia" placeholder="">
+                        </div>
+                    </div>
+                    <div class="separador">
+                        <div class="linha-ou"></div>
+                    </div>
+
+                    <!-- aqui vamos manipular com js -->
+                    <div class="btns">
+                        <div class="btns-action">
+                            <button class="btn-anonimo">Anônimo</button>
+                            <button class="btn-logado">Logado</button>
                         </div>
                     </div>
 
+                    <!-- quando clicar em anônimo -->
                     <div class="btns">
                         <div class="btns-action">
-                            <a href="/path/relato">Voltar</a>
-                            <a style="background-color: goldenrod; color: black;" href="/path/den-anexo">Próximo</a>
+                            <a href="/">Finalizar</a>
                         </div>
                     </div>
+                    
+                    <!-- quando clicar em logado -->
+                    <div class="btns">
+                        <div class="btns-action">
+                            <div class="half-box spacing">
+                                <label for="email">E-mail</label>
+                                <input type="email" name="emailDen" id="emailDen" placeholder="Digite seu e-mail">
+                            </div>
+                            <div class="half-box">
+                                <label for="password">Senha</label>
+                                <input type="password" name="senhaDen" id="senhaDen" placeholder="Digite sua senha" minlength="8">
+                            </div>
+                            <div class="btns">
+                                <div class="btns-action">
+                                    <input id="btn-submit" type="submit" value="Logar">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- botão cancelar aparecendo sempre -->
+                    <div class="btns">
+                        <div class="btns-action">
+                            <a href="/">Cancelar</a>
+                        </div>
+                    </div>
+
+                    <!-- <div class="btns">
+                        <div class="btns-action">
+                            <a href="/">Cancelar</a>
+                            <input id="btn-submit" type="submit" value="Logar">
+                        </div>
+                    </div> -->
+                </form>
             </div>
         </section>
     </main>

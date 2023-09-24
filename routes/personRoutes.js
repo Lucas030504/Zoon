@@ -1,13 +1,13 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 require('dotenv').config()
-
 const router = require('express').Router()
-
 // importando Person
 const Person = require('../models/Person')
 
 
+
+// isso não tem a ver com o usuário
 
 // clima
 router.get('/clima', async (req, res) => {
@@ -54,23 +54,6 @@ router.get('/zoonose-abaixo-3', async (req, res) => {
     res.render('zoonose-abaixo-3')
 })
 
-// denúncia
-router.get('/den-motivo', async (req, res) => {
-    res.render('den-motivo')
-})
-router.get('/den-relato', async (req, res) => {
-    res.render('den-relato')
-})
-router.get('/den-endereco', async (req, res) => {
-    res.render('den-endereco')
-})
-router.get('/den-anexo', async (req, res) => {
-    res.render('den-anexo')
-})
-router.get('/den-conclusao', async (req, res) => {
-    res.render('den-conclusao')
-})
-
 // teste de localização
 router.get('/localizacao', async (req, res) => {
     res.render('localizacao')
@@ -78,17 +61,16 @@ router.get('/localizacao', async (req, res) => {
 
 
 
+// a partir daqui tem
+
 // PRIVATE ROUTE - ROTA PRIVADA
 router.get('/usuario/:id', checkToken, async (req, res) => {
     let id = req.params.id
-
     // checando se usuário existe
     let user = await Person.findById(id)
-
     if (!user) {
         return res.status(404).json({msg: 'Usuário não encontrado'})
     }
-
     // res.status(200).json({user})
     res.status(200).json({msg: 'Olá ' + user.nome})
     // res.status(200).json({msg: 'Usuário encontrado'})
@@ -97,13 +79,10 @@ router.get('/usuario/:id', checkToken, async (req, res) => {
 
 function checkToken(req, res, next) {
     let authHeader = req.headers['authorization']
-    
     let token = authHeader && authHeader.split(" ")[1]
-
     if (!token) {
         return res.status(401).json({msg: "Acesso negado"})
     }
-
     try {
         let secret = process.env.SECRET
         jwt.verify(token, secret)
@@ -113,6 +92,9 @@ function checkToken(req, res, next) {
     }
 }
 
+
+
+// crud + login
 // CREATE
 router.get("/cadastrar", async (req, res) => {
     res.render('cadastrar')
@@ -127,13 +109,14 @@ router.post("/cadastrar", async (req, res) => {
     let confSenha = req.body.confSenha
 
     let date = new Date()
+    // getDay() pega o dia da semana
     // getDate() pega o dia do mês
     let dia = date.getDate()
-    // getDay() pega o dia da semana
     let mes = date.getMonth()+1
     let ano = date.getFullYear()
     let data = `${dia}/${mes}/${ano}`
 
+    // validações
     if (!email) {
         return res.status(422).json({msg: 'O e-mail é obrigatório'})
     }
@@ -143,15 +126,16 @@ router.post("/cadastrar", async (req, res) => {
     if (senha !== confSenha) {
         return res.status(422).json({msg: 'As senhas não estão iguais'})
     }
-
+    // checando se usuário existe
     let userExists = await Person.findOne({email: email})
     if (userExists) {
         return res.status(422).json({msg: 'Este e-mail já está cadastrado, tente outro'})
     }
-
+    // adicionando dificuldade na senha
     let salt = await bcrypt.genSalt(12)
     let senhaHash = await bcrypt.hash(senha, salt)
 
+    // adicionando no bd
     let newPerson = new Person({
         email,
         tel,
@@ -161,11 +145,9 @@ router.post("/cadastrar", async (req, res) => {
         data
     })
     await newPerson.save()
-    // para evitar de ficar carregando infinito, enviamos o usuário para outra página
+    // para evitar de ficar carregando infinito, envia o usuário para outra página
     res.redirect("/path/cadastrados")
 })
-
-
 
 // LOGIN
 router.get('/logar', async (req, res) => {
@@ -182,7 +164,6 @@ router.post('/logar', async(req, res) => {
     if (!senha) {
         return res.status(422).json({msg: 'A senha é obrigatória'})
     }
-
     // checando se usuário existe
     let user = await Person.findOne({email: email})
     if (!user) {
@@ -214,8 +195,6 @@ router.post('/logar', async(req, res) => {
     }
 })
 
-
-
 // READ
 router.get("/cadastrados", async (req, res) => {
     try {
@@ -226,8 +205,6 @@ router.get("/cadastrados", async (req, res) => {
     }
 })
 
-
-
 // UPDATE
 router.get("/atualizar/:id", async (req, res) => {
     let id = req.params.id
@@ -237,7 +214,6 @@ router.get("/atualizar/:id", async (req, res) => {
 // atualizando dado
 router.post('/atualizar/:id', async (req, res) => {
     let id = req.body.person_id
-
     let email = req.body.novoEmail
     let tel = req.body.novoTel
     let nome = req.body.novoNome
@@ -245,6 +221,7 @@ router.post('/atualizar/:id', async (req, res) => {
     let senha = req.body.novaSenha
     let confSenha = req.body.confSenha
 
+    // validações
     if (!email) {
         return res.status(422).json({msg: 'O e-mail é obrigatório'})
     }
@@ -254,7 +231,7 @@ router.post('/atualizar/:id', async (req, res) => {
     if (senha !== confSenha) {
         return res.status(422).json({msg: 'As senhas não estão iguais'})
     }
-
+    // adicionando dificuldade na senha
     let salt = await bcrypt.genSalt(12)
     let senhaHash = await bcrypt.hash(senha, salt)
 
@@ -274,11 +251,9 @@ router.post('/atualizar/:id', async (req, res) => {
         }
         res.redirect("/path/cadastrados")
     } catch (error) {
-        res.status(500).json({erro: error})
+        res.status(500).json({msg: 'Erro no servidor, tente novamente'})
     }
 })
-
-
 
 // DELETE
 router.get('/deletar/:id', async (req, res) => {
@@ -292,96 +267,13 @@ router.get('/deletar/:id', async (req, res) => {
         await Person.deleteOne({_id: id})
         // res.status(200).json({msg: 'Deletado com sucesso'})
     } catch (error) {
-        res.status(500).json({erro: error})
+        res.status(500).json({msg: 'Erro no servidor, tente novamente'})
     }
     let people = await Person.find()
     res.render('cadastrados', {
         peopleList: people
     })
 })
-
-
-
-// login para efetuar denúncia
-router.get('/denunciar-log', async (req, res) => {
-    res.render('denunciar-log')
-})
-router.post('/denunciar-log', async(req, res) => {
-    let email = req.body.emailDen
-    let senha = req.body.senhaDen
-
-    // validações
-    if (!email) {
-        return res.status(422).json({msg: 'O e-mail é obrigatório'})
-    }
-    if (!senha) {
-        return res.status(422).json({msg: 'A senha é obrigatória'})
-    }
-
-    let user = await Person.findOne({email: email})
-    if (!user) {
-        return res.status(404).json({msg: 'Usuário não encontrado'})
-    }
-
-    let checkPassword = await bcrypt.compare(senha, user.senha)
-    if (!checkPassword) {
-        return res.status(404).json({msg: 'Senha inválida'})
-    }
-
-    try {
-        // res.render('login-den', {user: user})
-        res.render('/')
-    } catch (error) {
-        console.log(error)
-        res.status(500).json({msg: 'Erro no servidor, tente novamente'})
-    }
-})
-
-
-
-// login para ver status da denúncia
-router.get('/ver-den-log', async (req, res) => {
-    res.render('ver-den-log')
-})
-router.post('/ver-den-log', async(req, res) => {
-    let email = req.body.emailVerDen
-    let senha = req.body.senhaVerDen
-
-    // validações
-    if (!email) {
-        return res.status(422).json({msg: 'O e-mail é obrigatório'})
-    }
-    if (!senha) {
-        return res.status(422).json({msg: 'A senha é obrigatória'})
-    }
-
-    let user = await Person.findOne({email: email})
-    if (!user) {
-        return res.status(404).json({msg: 'Usuário não encontrado'})
-    }
-
-    let checkPassword = await bcrypt.compare(senha, user.senha)
-    if (!checkPassword) {
-        return res.status(404).json({msg: 'Senha inválida'})
-    }
-
-    try {
-        // res.render('login-den', {user: user})
-        res.render('/path/ver-denuncias') // aqui vamos passar com as denúncias
-    } catch (error) {
-        console.log(error)
-        res.status(500).json({msg: 'Erro no servidor, tente novamente'})
-    }
-})
-
-// router.get("/ver-denuncias", async (req, res) => {
-//     try {
-//         let denuncias = await Denuncia.find()
-//         res.render('ver-denuncias', {denunciasList: denuncias})
-//     } catch (err) {
-//         console.log(err)
-//     }
-// })
 
 
 

@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 require('dotenv').config()
 const ejs = require('ejs')
-
 const app = express()
 
 
@@ -20,6 +19,9 @@ app.set('view engine', 'ejs')
 // importando personRoutes
 const personRoutes = require('./routes/personRoutes')
 app.use('/path', personRoutes)
+// importando denunciaRoutes
+const denunciaRoutes = require('./routes/denunciaRoutes')
+app.use('/path', denunciaRoutes)
 
 
 

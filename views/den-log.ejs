@@ -45,12 +45,27 @@
 
     <main>
         <section>
-            <h1>Denuncie como:</h1>
+            <h1>Logar</h1>
             <div id="main-container">
-                <div class="two-boxes">
-                    <a class="spacing" style="background-color: black;" href="/path/den-motivo">Anônimo</a>
-                    <a style="background-color: goldenrod; color: black;" href="/path/denunciar-log">Logado</a>
-                </div>
+                <form id="register-form" class="container" method="post" action="/path/den-log">
+                    
+                    <div class="half-box spacing">
+                        <label for="email">E-mail</label>
+                        <input type="email" name="emailDen" id="emailDen" placeholder="Digite seu e-mail">
+                    </div>
+                    
+                    <div class="half-box">
+                        <label for="password">Senha</label>
+                        <input type="password" name="senhaDen" id="senhaDen" placeholder="Digite sua senha" minlength="8">
+                    </div>
+                    
+                    <div class="btns">
+                        <div class="btns-action">
+                            <a href="/">Cancelar</a>
+                            <input id="btn-submit" type="submit" value="Logar">
+                        </div>
+                    </div>
+                </form>
             </div>
         </section>
     </main>
