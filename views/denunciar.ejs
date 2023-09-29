@@ -48,7 +48,7 @@
         <section>
             <h1>Registre sua denúncia</h1>
             <div id="main-container">
-                <form id="den-form" class="container" method="post" action="/path/den-log">
+                <form id="den-form" class="container" method="post" action="/path/denunciar">
                     <!-- motivo -->
                     <div class="full-box">
                         <label for="motivo">Motivo</label>
@@ -67,7 +67,7 @@
                     <!-- relato -->
                     <div class="full-box">
                         <label for="relato">Relato</label>
-                        <textarea type="text" placeholder="Nos conte o ocorrido" required></textarea>
+                        <textarea type="text" name="relato" placeholder="Nos conte o ocorrido" required></textarea>
                     </div>
                     
                     <!-- endereço -->
@@ -76,17 +76,46 @@
                     </div>
                     <div class="full-box">
                         <label for="cep">CEP</label>
-                        <input type="text" name="cep" id="cep" placeholder="Digite o CEP">
+                        <input type="text" name="cep" id="cep" placeholder="Digite o CEP" maxlength="8">
                     </div>
                     <div class="separador">
                         <div class="linha-ou"></div>
                         <p class="ou">OU</p>
                         <div class="linha-ou"></div>
                     </div>
-                    <div class="endereco">
+                    <!-- <div class="endereco"> -->
                         <div class="half-box spacing">
                             <label for="estado">Estado</label>
-                            <input type="text" name="estado" id="estado" placeholder="">
+                            <select name="estado" id="estado">
+                                <option value="" disabled selected>Selecione</option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PR">Paraná</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="TO">Tocantins</option>
+                            </select>
                         </div>
                         <div class="half-box">
                             <label for="cidade">Cidade</label>
@@ -100,66 +129,50 @@
                             <label for="rua">Rua</label>
                             <input type="text" name="rua" id="rua" placeholder="">
                         </div>
-                        <div class="half-box spacing">
-                            <label for="complemento">Complemento</label>
-                            <input type="text" name="complemento" id="complemento" placeholder="">
+                        <div class="display">
+                            <div class="half-box spacing">
+                                <label for="complemento">Complemento</label>
+                                <input type="text" name="complemento" id="complemento" placeholder="">
+                            </div>
+                            <div class="half-box">
+                                <label for="nmr-moradia">Número</label>
+                                <input type="text" name="nmr_moradia" id="nmr-moradia" placeholder="">
+                            </div>
                         </div>
-                        <div class="half-box">
-                            <label for="nmr-moradia">Número</label>
-                            <input type="text" name="nmr-moradia" id="nmr-moradia" placeholder="">
-                        </div>
-                    </div>
+                    <!-- </div> -->
                     <div class="separador">
                         <div class="linha-ou"></div>
                     </div>
 
-                    <!-- aqui vamos manipular com js -->
-                    <div class="btns">
-                        <div class="btns-action">
-                            <button class="btn-anonimo">Anônimo</button>
-                            <button class="btn-logado">Logado</button>
-                        </div>
-                    </div>
-
-                    <!-- quando clicar em anônimo -->
-                    <div class="btns">
-                        <div class="btns-action">
-                            <a href="/">Finalizar</a>
-                        </div>
+                    <div class="info">
+                        <p>Caso não queira se identificar, apenas finalize a denúncia</p>
                     </div>
                     
-                    <!-- quando clicar em logado -->
-                    <div class="btns">
-                        <div class="btns-action">
-                            <div class="half-box spacing">
-                                <label for="email">E-mail</label>
-                                <input type="email" name="emailDen" id="emailDen" placeholder="Digite seu e-mail">
-                            </div>
-                            <div class="half-box">
-                                <label for="password">Senha</label>
-                                <input type="password" name="senhaDen" id="senhaDen" placeholder="Digite sua senha" minlength="8">
-                            </div>
-                            <div class="btns">
-                                <div class="btns-action">
-                                    <input id="btn-submit" type="submit" value="Logar">
+                    <!-- <div class="btns"> -->
+                        <!-- <div class="btns-action"> -->
+                            <div class="display">
+                                <div class="half-box spacing">
+                                    <label for="email">E-mail</label>
+                                    <input type="email" name="emailDen" id="emailDen" placeholder="Digite seu e-mail">
+                                </div>
+                                <div class="half-box">
+                                    <label for="password">Senha</label>
+                                    <input type="password" name="senhaDen" id="senhaDen" placeholder="Digite sua senha" minlength="8">
                                 </div>
                             </div>
-                        </div>
+                        <!-- </div> -->
+                    <!-- </div> -->
+
+                    <div class="info">
+                        <p><strong><a href="/path/cadastrar">Cadastre-se</a></strong> e acompanhe o andamento de sua denúncia</p>
                     </div>
-                    
-                    <!-- botão cancelar aparecendo sempre -->
+
                     <div class="btns">
                         <div class="btns-action">
                             <a href="/">Cancelar</a>
+                            <input id="btn-submit" type="submit" value="Finalizar">
                         </div>
                     </div>
-
-                    <!-- <div class="btns">
-                        <div class="btns-action">
-                            <a href="/">Cancelar</a>
-                            <input id="btn-submit" type="submit" value="Logar">
-                        </div>
-                    </div> -->
                 </form>
             </div>
         </section>

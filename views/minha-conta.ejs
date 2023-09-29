@@ -6,97 +6,30 @@
     <title>Zoon</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/autenticacao.css">
-    <link rel="stylesheet" href="/css/denuncia.css">
     <script src="/js/script.js" defer></script>
 </head>
 <body>
     <!-- cabeçalho -->
     <header id="header">
-        <!-- <button class="btn-icon-header btn-hamburger" onclick="toggleSidebar()"> -->
-            <!-- ícone de lista do site bootstrap icons -->
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list"
-                viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-            </svg>
-        </button> -->
-
         <!-- logo -->
         <div class="logo-header">
             <a href="/">Zoon</a>
         </div>
-
-        <!-- menu -->
-        <!-- <nav id="nav">
-            <button class="btn-icon-header btn-x" onclick="toggleSidebar()"> -->
-                <!-- ícone x no site bootstrap icons -->
-                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x"
-                    viewBox="0 0 16 16">
-                    <path
-                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                </svg>
-            </button> -->
-
-            <!-- links do menu -->
-            <!-- <a href="/path/cadastrar" class="active">Cadastrar</a>
-        </nav> -->
     </header>
 
-
+    
 
     <main>
         <section>
-            <h1>Denúncia anônima:</h1>
-            <div id="passos">
-                <div class="linha"></div>
-                <div class="passo">
-                    <div class="ativo">
-                        <p>Motivo</p>
+            <h1>Meus dados</h1>
+                    <div class="usuarios">
+                        <p><strong>E-mail:</strong> <%=user.email%> </p>
+                        <p><strong>Nome Completo:</strong> <%=user.nome%> <%=user.sobrenome%> </p>
+                        <p><strong>Telefone:</strong> <%=user.tel%> </p>
+                        <p><strong>Data de Cadastro:</strong> <%=user.data%> </p>
+                        <a href="/path/atualizar/<%=user._id%>">Atualizar</a>
+                        <a href="/path/deletar/<%=user._id%>">Deletar</a>
                     </div>
-                </div>
-                <div class="passo">
-                    <div class="inativo">
-                        <p>Relato</p>
-                    </div>
-                </div>
-                <div class="passo">
-                    <div class="inativo">
-                        <p>Endereço</p>
-                    </div>
-                </div>
-                <div class="passo">
-                    <div class="inativo">
-                        <p>Anexo</p>
-                    </div>
-                </div>
-                <div class="passo">
-                    <div class="inativo">
-                        <p>Conclusão</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="main-container">
-                <div>
-                    <h2>Motivo</h2>
-                    <select name="motivo" id="motivo">
-                        <option value="" disabled selected>Selecione</option>
-                        <option value="">A</option>
-                        <option value="">B</option>
-                        <option value="">C</option>
-                        <option value="">D</option>
-                        <option value="">E</option>
-                        <option value="">F</option>
-                        <option value="">G</option>
-                    </select>
-                </div>
-                <div class="btns">
-                    <div class="btns-action">
-                        <a href="/">Cancelar</a>
-                        <a style="background-color: goldenrod; color: black;" href="/path/den-relato">Próximo</a>
-                    </div>
-                </div>
-            </div>
         </section>
     </main>
 
@@ -145,5 +78,6 @@
             <!-- <p>Copyright&copy;2023</p> -->
         </div>
     </footer>
+    
 </body>
 </html>

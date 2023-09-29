@@ -57,9 +57,11 @@
 }
 
 /* formulário */
-#main-container h2 {
-    margin-bottom: 15px;
-}
+/* #den-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+} */
 /* motivo */
 select {
     width: 100%;
@@ -76,12 +78,6 @@ textarea {
     margin-bottom: 20px;
 }
 
-/* endereço */
-.endereco {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
 /* separador */
 .separador {
     display: flex;
@@ -104,4 +100,20 @@ textarea {
 /* anexo */
 #anexo {
     border: none;
+}
+
+
+
+/* ver denúncias */
+.usuarios-anonimos {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.usuarios-anonimos img {
+    width: 50px;
+    border-radius: 22px;
+}
+.usuarios-anonimos p {
+    margin-top: 24px;
 }

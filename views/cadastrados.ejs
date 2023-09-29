@@ -49,18 +49,14 @@
             <h1>Cadastrados</h1>
                 <%peopleList.forEach((person, index) => {%>
                     <div class="usuarios">
-                        <div class="dados">
-                            <p><strong>E-mail:</strong> <%=person.email%></p>
-                            <p><strong>Telefone:</strong> <%=person.tel%></p>
-                            <p><strong>Nome Completo:</strong> <%=person.nome%> <%=person.sobrenome%></p>
-                            <p><strong>Data de Cadastro:</strong> <%=person.data%></p>
-                            <p><strong>ID:</strong> <%=person._id%></p>
-                            <p><strong>Index:</strong> <%=index%></p>
-                        </div>
-                        <div class="acoes">
-                            <a href="/path/atualizar/<%=person._id%>">Atualizar</a>
-                            <a href="/path/deletar/<%=person._id%>">Deletar</a>
-                        </div>
+                        <p><strong>E-mail:</strong> <%=person.email%> </p>
+                        <p><strong>Telefone:</strong> <%=person.tel%> </p>
+                        <p><strong>Nome Completo:</strong> <%=person.nome%> <%=person.sobrenome%> </p>
+                        <p><strong>Data de Cadastro:</strong> <%=person.data%> </p>
+                        <p><strong>ID:</strong> <%=person._id%> </p>
+                        <p><strong>Index:</strong> <%=index%> </p>
+                        <a href="/path/atualizar/<%=person._id%>">Atualizar</a>
+                        <a href="/path/deletar/<%=person._id%>">Deletar</a>
                     </div>
                 <%})%>
         </section>

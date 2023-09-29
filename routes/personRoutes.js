@@ -13,7 +13,6 @@ const Person = require('../models/Person')
 router.get('/clima', async (req, res) => {
     res.render('clima')
 })
-
 // notícias
 router.get('/noticia-principal', async (req, res) => {
     res.render('noticia-principal')
@@ -33,7 +32,6 @@ router.get('/noticia-abaixo-2', async (req, res) => {
 router.get('/noticia-abaixo-3', async (req, res) => {
     res.render('noticia-abaixo-3')
 })
-
 // zoonoses
 router.get('/zoonose-principal', async (req, res) => {
     res.render('zoonose-principal')
@@ -53,7 +51,6 @@ router.get('/zoonose-abaixo-2', async (req, res) => {
 router.get('/zoonose-abaixo-3', async (req, res) => {
     res.render('zoonose-abaixo-3')
 })
-
 // teste de localização
 router.get('/localizacao', async (req, res) => {
     res.render('localizacao')
@@ -94,7 +91,6 @@ function checkToken(req, res, next) {
 
 
 
-// crud + login
 // CREATE
 router.get("/cadastrar", async (req, res) => {
     res.render('cadastrar')
@@ -145,9 +141,14 @@ router.post("/cadastrar", async (req, res) => {
         data
     })
     await newPerson.save()
+
+    let person = await Person.findOne({email:email})
+    let id = person._id
     // para evitar de ficar carregando infinito, envia o usuário para outra página
-    res.redirect("/path/cadastrados")
+    res.redirect(`/path/minha-conta/${id}`)
 })
+
+
 
 // LOGIN
 router.get('/logar', async (req, res) => {
@@ -169,7 +170,6 @@ router.post('/logar', async(req, res) => {
     if (!user) {
         return res.status(404).json({msg: 'Usuário não encontrado'})
     }
-
     // checando se a senha bate
     // a primeira senha é a que o usuário enviou e a segunda é a que está salva no banco
     let checkPassword = await bcrypt.compare(senha, user.senha)
@@ -188,22 +188,34 @@ router.post('/logar', async(req, res) => {
     //     res.status(500).json({msg: 'Erro no servidor, tente novamente'})
     // }
     try {
-        res.redirect('main')
+        let id = await user._id
+        res.redirect(`/path/minha-conta/${id}`)
     } catch (error) {
         console.log(error)
         res.status(500).json({msg: 'Erro no servidor, tente novamente'})
     }
 })
 
-// READ
-router.get("/cadastrados", async (req, res) => {
-    try {
-        let people = await Person.find()
-        res.render('cadastrados', {peopleList: people})
-    } catch (err) {
-        console.log(err)
-    }
+
+
+// READ ONE
+router.get("/minha-conta/:id", async (req, res) => {
+    let id = req.params.id
+    let person = await Person.findOne({_id: id})
+    res.render('minha-conta', {user: person})
 })
+
+// READ ALL
+// router.get("/cadastrados", async (req, res) => {
+//     try {
+//         let people = await Person.find()
+//         res.render('cadastrados', {peopleList: people})
+//     } catch (err) {
+//         console.log(err)
+//     }
+// })
+
+
 
 // UPDATE
 router.get("/atualizar/:id", async (req, res) => {
@@ -214,54 +226,39 @@ router.get("/atualizar/:id", async (req, res) => {
 // atualizando dado
 router.post('/atualizar/:id', async (req, res) => {
     let id = req.body.person_id
+
     let email = req.body.novoEmail
-    let tel = req.body.novoTel
     let nome = req.body.novoNome
     let sobrenome = req.body.novoSobrenome
-    let senha = req.body.novaSenha
-    let confSenha = req.body.confSenha
-
-    // validações
-    if (!email) {
-        return res.status(422).json({msg: 'O e-mail é obrigatório'})
-    }
-    if (!senha) {
-        return res.status(422).json({msg: 'A senha é obrigatória'})
-    }
-    if (senha !== confSenha) {
-        return res.status(422).json({msg: 'As senhas não estão iguais'})
-    }
-    // adicionando dificuldade na senha
-    let salt = await bcrypt.genSalt(12)
-    let senhaHash = await bcrypt.hash(senha, salt)
+    let tel = req.body.novoTel
 
     try {
         let updatedPerson = await Person.findByIdAndUpdate({_id: id}, {
             $set: {
                 email,
-                tel,
                 nome,
                 sobrenome,
-                senha:senhaHash
+                tel
             }
         })
         if (updatedPerson.matchedCount === 0) {
             res.status(422).json({msg: 'Usuário não encontrado'})
             return
         }
-        res.redirect("/path/cadastrados")
+        res.redirect(`/path/minha-conta/${id}`)
     } catch (error) {
         res.status(500).json({msg: 'Erro no servidor, tente novamente'})
     }
 })
+
+
 
 // DELETE
 router.get('/deletar/:id', async (req, res) => {
     let id = req.params.id
     let deletedPerson = await Person.findOne({_id: id})
     if (!deletedPerson) {
-        res.status(422).json({msg: 'Usuário não encontrado'})
-        return
+        return res.status(422).json({msg: 'Usuário não encontrado'})
     }
     try {
         await Person.deleteOne({_id: id})
@@ -269,10 +266,7 @@ router.get('/deletar/:id', async (req, res) => {
     } catch (error) {
         res.status(500).json({msg: 'Erro no servidor, tente novamente'})
     }
-    let people = await Person.find()
-    res.render('cadastrados', {
-        peopleList: people
-    })
+    res.redirect('/')
 })
 
 

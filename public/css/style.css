@@ -103,8 +103,8 @@ main a {
     text-decoration: none;
 }
 section {
-    margin: 1rem 0 5rem;
-    background-color: var(--color-dark2);
+    margin: .5rem 0 5rem;
+    /* background-color: var(--color-dark2); */
     padding: 1rem;
     border-radius: 1rem;
 }

@@ -3,17 +3,16 @@ const mongoose = require('mongoose')
 const Denuncia = mongoose.model('Denuncia', {
     motivo: String,
     relato: String,
+    cep: Number,
     estado: String,
     cidade: String,
     bairro: String,
     rua: String,
     complemento: String,
-    numero: Number,
-    // anexo: File,
-    // tipo de denúncia (anônimo ou logado)
-    tipo: String,
+    numero: String,
     email: String,
-    senha: String
+    // anexo: File
+    data: String
 
 })
 

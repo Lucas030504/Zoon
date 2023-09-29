@@ -48,20 +48,15 @@
     <main>
         <section>
             <h1>Denúncias:</h1>
-            <%denunciasList.forEach((denuncia, index) => {%>
+            <%denunciasList.forEach((denuncia) => {%>
                 <div class="usuarios">
-                    <div class="dados">
-                        <p><strong>E-mail:</strong> <%=denuncia.email%></p>
-                        <p><strong>Telefone:</strong> <%=denuncia.tel%></p>
-                        <p><strong>Nome Completo:</strong> <%=denuncia.nome%> <%=denuncia.sobrenome%></p>
-                        <p><strong>Data de Cadastro:</strong> <%=denuncia.data%></p>
-                        <p><strong>ID:</strong> <%=denuncia._id%></p>
-                        <p><strong>Index:</strong> <%=index%></p>
+                    <div class="usuarios-anonimos">
+                        <img src="/images/user-icon.png" alt="">
+                        <p><strong>Usuário:</strong> <%=denuncia.email%> </p>
                     </div>
-                    <div class="acoes">
-                        <a href="/path/atualizar/<%=denuncia._id%>">Atualizar</a>
-                        <a href="/path/deletar/<%=denuncia._id%>">Deletar</a>
-                    </div>
+                    <p><strong>Motivo:</strong> <%=denuncia.motivo%> </p>
+                    <p><strong>Relato:</strong> <%=denuncia.relato%> </p>
+                    <p><strong>Data:</strong> <%=denuncia.data%> </p>
                 </div>
             <%})%>
         </section>

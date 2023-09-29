@@ -8,7 +8,6 @@
 * {
     /* isso é para os inputs, porque eles geralmente passam a margem da borda */
     box-sizing: border-box;
-
     border: none;
 }
 a {
@@ -18,14 +17,12 @@ a {
 
 
 input, label {
-    /* cada um representa uma linha, não queremos um do lado do outro */
     display: block;
-
     width: 100%;
 }
 /* focus é quando clica */
 input:focus, label:focus {
-    /* tira a borda azul (?) */
+    /* tira a borda azul */
     outline: none;
 }
 
@@ -41,13 +38,11 @@ input:focus, label:focus {
 }
 #register-form {
     display: flex;
-
-    /* alinhar os elementos da forma que estamos adicionando */
-    flex-wrap: wrap;
-
+    flex-direction: column;
+    /* flex-wrap: wrap; */
     justify-content: space-between;
 }
-.full-box {
+/* .full-box {
     flex: 1 1 100%;
     position: relative;
 }
@@ -57,7 +52,7 @@ input:focus, label:focus {
 }
 .spacing {
     margin-right: 2.5%;
-}
+} */
 label {
     font-weight: bold;
     font-size: 1rem;
@@ -66,7 +61,7 @@ label {
 input {
     border-bottom: 2px solid gray;
     padding: 10px;
-    font-size: .9rem;
+    font-size: 14px;
     margin-bottom: 30px;
     border-radius: 5px;
     transition: .5s;
@@ -74,8 +69,14 @@ input {
 input:focus {
     border-bottom-color: var(--color-gold);
 }
+.info {
+    font-size: 14px;
+    opacity: .6;
+    margin: -6px 0 22px;
+}
 .btns {
     width: 100%;
+    margin-bottom: -30px;
 }
 .btns-action {
     height: fit-content;
@@ -106,23 +107,30 @@ input:focus {
     margin-top: 10px;
     border-bottom: none;
 }
+.display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+
 .usuarios {
     background-color: var(--color-dark2);
-    margin: 2rem 0 1rem .8rem;
-    width: 48%;
-    float: left;
+    width: 500px;
+    margin: 0 auto 12px;
     border-radius: 1em;
     padding: 1em;
 }
 .usuarios a {
-    margin-right: 1rem;
+    margin-right: 12px;
     background-color: var(--color-gold);
     color: var(--color-dark1);
     padding: 5px;
     border-radius: 5px;
 }
 .usuarios p {
-    margin-bottom: 1rem;
+    margin-bottom: 24px;
     text-align: left;
 }
 
