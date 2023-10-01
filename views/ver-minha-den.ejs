@@ -37,7 +37,7 @@
             </button>
 
             <!-- links do menu -->
-            <a href="/path/cadastrar" class="active">Cadastrar</a>
+            <a href="/path/denunciar" class="active">Denunciar</a>
         </nav>
     </header>
 
@@ -47,7 +47,7 @@
         <section>
             <h1>Logar</h1>
             <div id="main-container">
-                <form id="register-form" class="container" method="post" action="/path/ver-den-log">
+                <form id="register-form" class="container" method="post" action="/path/ver-minha-den">
                     
                     <div class="half-box spacing">
                         <label for="email">E-mail</label>
@@ -58,17 +58,35 @@
                         <label for="password">Senha</label>
                         <input type="password" name="senhaVerDen" id="senhaVerDen" placeholder="Digite sua senha" minlength="8">
                     </div>
+
+                    <div class="info">
+                        <p>Caso não tenha uma conta, <strong><a href="/path/cadastrar">Cadastre-se</a></strong></p>
+                    </div>
                     
                     <div class="btns">
                         <div class="btns-action">
-                            <a href="/">Cancelar</a>
-                            <a style="background-color: goldenrod; color: black;" href="/path/ver-denuncias">Logar</a>
+                            <a href="/path/ver-denuncias">Voltar</a>
+                            <input id="btn-submit" type="submit" value="Logar">
                         </div>
                     </div>
                 </form>
             </div>
         </section>
     </main>
+
+
+
+    <!-- acessibilidade -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 
 
 

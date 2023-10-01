@@ -51,10 +51,6 @@ router.get('/zoonose-abaixo-2', async (req, res) => {
 router.get('/zoonose-abaixo-3', async (req, res) => {
     res.render('zoonose-abaixo-3')
 })
-// teste de localização
-router.get('/localizacao', async (req, res) => {
-    res.render('localizacao')
-})
 
 
 

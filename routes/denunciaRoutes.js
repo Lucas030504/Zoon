@@ -56,7 +56,7 @@ router.post("/denunciar", async (req, res) => {
             return res.status(404).json({msg: 'Senha inválida'})
         }
     } else {
-        email = "anônimo"
+        email = "Anônimo"
     }
 
     // adicionando no bd
@@ -74,8 +74,10 @@ router.post("/denunciar", async (req, res) => {
         data
     })
     await newDenuncia.save()
-    if (email == "anônimo") {
+    if (email == "Anônimo") {
         res.redirect("/path/ver-denuncias")
+    } else {
+        res.redirect("/")
     }
 })
 
@@ -84,9 +86,34 @@ router.post("/denunciar", async (req, res) => {
 // recuperando denúncias anônimas
 router.get("/ver-denuncias", async (req, res) => {
     try {
-        let denuncias = await Denuncia.find({email:"anônimo"})
-        // let denuncias = await Denuncia.find({email:"anonimo"})
+        let denuncias = await Denuncia.find({email:"Anônimo"})
         res.render('ver-denuncias', {denunciasList:denuncias})
+    } catch (err) {
+        console.log(err)
+    }
+})
+// recuperando denúncias logadas
+router.get("/ver-minha-den", async (req, res) => {
+    res.render("ver-minha-den")
+})
+router.post("/ver-minha-den", async (req, res) => {
+    let email = req.body.emailVerDen
+    let senha = req.body.senhaVerDen
+
+    // checando se usuário existe
+    let user = await Person.findOne({email: email})
+    if (!user) {
+        return res.status(404).json({msg: 'Usuário não encontrado'})
+    }
+    // checando se a senha bate
+    let checkPassword = await bcrypt.compare(senha, user.senha)
+    if (!checkPassword) {
+        return res.status(404).json({msg: 'Senha inválida'})
+    }
+
+    try {
+        let denuncias = await Denuncia.find({email:email})
+        res.render('minhas-denuncias', {denunciasList:denuncias})
     } catch (err) {
         console.log(err)
     }
