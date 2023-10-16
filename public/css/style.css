@@ -427,18 +427,18 @@ footer a, footer p {
 /* animação */
 @keyframes showSidebar {
     from {
-        margin-left: -700vw;
+        margin-left: -1000vw;
     }
     to {
-        margin-left: -7vw;
+        margin-left: -10vw;
     }
 }
 @keyframes hideSidebar {
     from {
-        margin-left: -7vw;
+        margin-left: -10vw;
     }
     to {
-        margin-left: -700vw;
+        margin-left: -1000vw;
     }
 }
 

@@ -8,9 +8,9 @@ novoTel.addEventListener('keypress', () => {
         novoTel.value += '('
     }
     if (inputLength === 3) {
-        novoTel.value += ')'
+        novoTel.value += ') '
     }
-    if (inputLength === 9) {
+    if (inputLength === 10) {
         novoTel.value += '-'
     }
 })

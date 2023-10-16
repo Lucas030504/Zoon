@@ -8,9 +8,9 @@ tel.addEventListener('keypress', () => {
         tel.value += '('
     }
     if (inputLength === 3) {
-        tel.value += ')'
+        tel.value += ') '
     }
-    if (inputLength === 9) {
+    if (inputLength === 10) {
         tel.value += '-'
     }
 })

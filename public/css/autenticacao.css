@@ -126,7 +126,7 @@ input:focus {
     margin-right: 12px;
     background-color: var(--color-gold);
     color: var(--color-dark1);
-    padding: 5px;
+    padding: 5px 6px 7px;
     border-radius: 5px;
 }
 .usuarios p {

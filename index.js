@@ -37,8 +37,8 @@ const db_user = process.env.DB_USER
 const db_pass = process.env.DB_PASS
 mongoose.connect(
     // podemos criar um banco pela própria url de conexão inserindo o nome antes do ?
-    `mongodb+srv://${db_user}:${db_pass}@clusterzoon.j9cb4fh.mongodb.net/users?retryWrites=true&w=majority`//, {useNewUrlParser: true}, {useUnifiedTopology: true}
-)
+    `mongodb+srv://${db_user}:${db_pass}@clusterzoon.wekproe.mongodb.net/zoon?retryWrites=true&w=majority`//, {useNewUrlParser: true}, {useUnifiedTopology: true}
+    )
     .then(() => {
         console.log('mongodb conectado')
         app.listen(3000)

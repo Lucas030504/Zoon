@@ -9,12 +9,12 @@ function toggleSidebar() {
     showSidebar = !showSidebar
     if(showSidebar) {
         // if true
-        nav.style.marginLeft = '-7vw'
+        nav.style.marginLeft = '-10vw'
         // se refere ao showSidebar do css
         nav.style.animationName = 'showSidebar'
     } else {
         // if false
-        nav.style.marginLeft = '-100vw'
+        nav.style.marginLeft = '-1000vw'
         nav.style.animationName = 'hideSidebar'
     }
 }
