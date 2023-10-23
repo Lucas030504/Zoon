@@ -1,0 +1,41 @@
+/* paleta de cores */
+:root {
+    --color-white: whitesmoke;
+    --color-dark1: #111;
+    --color-dark2: rgba(10, 10, 10, 0.1);
+    --color-gold: goldenrod;
+    --color-silver: rgba(195, 195, 195, .5);
+}
+
+
+
+.card {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(200, 200, 200, .5);
+    display: flex;
+    align-items: center;
+    transition: .5s;
+}
+.card:hover {
+    transform: translateY(-10px);
+}
+.imagem {
+    width: 50%;
+    margin-bottom: -4px;
+}
+.imagem img {
+    border-radius: 10px;
+    width: 100%;
+}
+.texto {
+    width: 50%;
+    text-align: justify;
+}
+
+iframe {
+    width: 100%;
+    min-height: 300px;
+    border: none;
+    border-radius: 10px;
+}

@@ -1,0 +1,140 @@
+/* barra de scroll */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: white;
+}
+::-webkit-scrollbar-thumb {
+    background: silver;
+    /* border-radius: 10px; */
+}
+::-webkit-scrollbar-thumb:hover {
+    background: gray;
+}
+/* todo conteúdo */
+* {
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+    font-family: system-ui, sans-serif;
+}
+
+
+
+/* gambiarra */
+.gambiarra {
+    position: relative;
+}
+/* cabeçalho */
+header,
+nav {
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+}
+header {
+    background-color: var(--color-gold);
+    padding: 0 30px 5px;
+    height: 60px;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+nav {
+    gap: 15px;
+}
+nav a {
+    font-size: 1.2rem;
+    transition: .5s;
+}
+.active:hover {
+    background-color: var(--color-dark2);
+    padding: 10px;
+    margin: -10px;
+    border-radius: 10px;
+}
+/* logo */
+.logo-header h1 {
+    color: var(--color-dark1);
+}
+/* botão de menu responsivo */
+.btn-icon-header {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+.btn-hamburger {
+    color: var(--color-dark1);
+}
+.btn-x {
+    color: var(--color-white);
+}
+
+
+
+/* conteúdo */
+.espaco {
+    width: 10px;
+    height: 20px;
+}
+a {
+    text-decoration: none;
+    color: var(--color-dark1);
+}
+h1 {
+    font-size: 2.2rem;
+    font-weight: 400;
+}
+h2 {
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--color-gold);
+}
+h3 {
+    font-size: 1.4rem;
+}
+main {
+    width: 900px;
+    margin: 60px auto 0;
+}
+section {
+    min-height: 300px;
+    margin-bottom: 50px;
+}
+
+
+
+/* rodapé */
+footer {
+    background-color: var(--color-dark1);
+    color: var(--color-white);
+    padding: 60px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.contatos ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.contatos ul li {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+.titulo-final {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.titulo-final h1 {
+    width: 100%;
+    border-bottom: 2px solid var(--color-gold);
+}

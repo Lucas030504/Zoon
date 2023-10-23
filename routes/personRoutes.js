@@ -14,42 +14,42 @@ router.get('/clima', async (req, res) => {
     res.render('clima')
 })
 // notícias
-router.get('/noticia-principal', async (req, res) => {
-    res.render('noticia-principal')
+router.get('/langya', async (req, res) => {
+    res.render('langya')
 })
-router.get('/noticia-lateral-1', async (req, res) => {
-    res.render('noticia-lateral-1')
+router.get('/desafios', async (req, res) => {
+    res.render('desafios')
 })
-router.get('/noticia-lateral-2', async (req, res) => {
-    res.render('noticia-lateral-2')
+router.get('/preocupacao', async (req, res) => {
+    res.render('preocupacao')
 })
-router.get('/noticia-abaixo-1', async (req, res) => {
-    res.render('noticia-abaixo-1')
+router.get('/pandemias', async (req, res) => {
+    res.render('pandemias')
 })
-router.get('/noticia-abaixo-2', async (req, res) => {
-    res.render('noticia-abaixo-2')
+router.get('/adocao', async (req, res) => {
+    res.render('adocao')
 })
-router.get('/noticia-abaixo-3', async (req, res) => {
-    res.render('noticia-abaixo-3')
+router.get('/valparaiso', async (req, res) => {
+    res.render('valparaiso')
 })
 // zoonoses
-router.get('/zoonose-principal', async (req, res) => {
-    res.render('zoonose-principal')
+router.get('/dengue', async (req, res) => {
+    res.render('dengue')
 })
-router.get('/zoonose-lateral-1', async (req, res) => {
-    res.render('zoonose-lateral-1')
+router.get('/chikungunya', async (req, res) => {
+    res.render('chikungunya')
 })
-router.get('/zoonose-lateral-2', async (req, res) => {
-    res.render('zoonose-lateral-2')
+router.get('/zika', async (req, res) => {
+    res.render('zika')
 })
-router.get('/zoonose-abaixo-1', async (req, res) => {
-    res.render('zoonose-abaixo-1')
+router.get('/febre-amarela', async (req, res) => {
+    res.render('febre-amarela')
 })
-router.get('/zoonose-abaixo-2', async (req, res) => {
-    res.render('zoonose-abaixo-2')
+router.get('/leptospirose', async (req, res) => {
+    res.render('leptospirose')
 })
-router.get('/zoonose-abaixo-3', async (req, res) => {
-    res.render('zoonose-abaixo-3')
+router.get('/raiva', async (req, res) => {
+    res.render('raiva')
 })
 
 

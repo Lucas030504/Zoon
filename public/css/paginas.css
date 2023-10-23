@@ -14,35 +14,27 @@ section li {
     list-style-type: disc;
 }
 
-.titulo-ancora {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: .5rem;
+.titulo-referencia {
     width: 100%;
+    display: flex;
+    align-items: center;
 }
-.titulo-ancora h1 {
+.titulo-referencia .titulo {
     width: 80%;
 }
-.titulo-ancora ul {
+.titulo-referencia .referencia {
     background-color: var(--color-dark2);
-    border-radius: .5rem;
-    padding: .7rem 1rem .3rem 0;
-    margin: 1rem auto;
+    color: var(--color-dark1);
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px 0 12px;
     width: 20%;
 }
-.titulo-ancora ul li {
-    text-align: center;
-    list-style: none;
-}
-.titulo-ancora a {
-    color: var(--color-dark1);
-    font-weight: bold;
-}
-.titulo-ancora a:hover {
+.titulo-referencia .referencia a:hover {
     border-bottom: 2px solid var(--color-gold);
 }
-.lista-ancoras {
+/* .lista-ancoras {
     width: 222px;
     background-color: var(--color-dark2);
     border-radius: .5rem;
@@ -57,43 +49,17 @@ section li {
 }
 .lista-ancoras a:hover {
     border-bottom: 2px solid var(--color-gold);
-}
+} */
 
-.imagem-principal img {
+.conteudo-imagem img {
     width: 50%;
     float: left;
-    margin: 0 1rem 0 .5rem;
-    border-radius: 1rem;
+    margin: 0 15px 0 0;
+    border-radius: 10px;
 }
-.conteudo-principal {
-    margin: 0 .5rem;
+.conteudo-texto p, .conteudo-texto h3 {
+    margin-bottom: 30px;
 }
-.conteudo-principal p {
-    margin-bottom: 1.5rem;
-}
-.conteudo-principal h2 {
-    margin-bottom: 1.5rem;
-}
-
-
-
-/* responsividade */
-@media screen and (max-width: 455px) {
-    .titulo-ancora {
-        flex-direction: column;
-    }
-    h1 {
-        font-size: 1.5rem;
-    }
-    .titulo-ancora ul {
-        margin: 0 auto 2rem;
-        width: 90%;
-    }
-    .imagem-principal img {
-        width: 93%;
-        float: none;
-    }
-    .conteudo-principal h2 {
-        margin-top: 1.5rem;
-    }
+.conteudo-texto h3 {
+    border-bottom: 2px solid var(--color-gold);
 }

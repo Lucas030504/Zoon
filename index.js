@@ -27,7 +27,7 @@ app.use('/path', denunciaRoutes)
 
 // tela principal
 app.get("/", async (req, res) => {
-    res.render('main')
+    res.render('principal')
 })
 
 
