@@ -2,8 +2,11 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 require('dotenv').config()
 const router = require('express').Router()
+require('dotenv').config()
 // importando Person
 const Person = require('../models/Person')
+// importando Denuncia
+const Denuncia = require('../models/Denuncia')
 
 
 
@@ -146,6 +149,7 @@ router.post("/cadastrar", async (req, res) => {
 
 
 
+const admin_email = process.env.ADMIN_EMAIL
 // LOGIN
 router.get('/logar', async (req, res) => {
     res.render('logar')
@@ -161,6 +165,7 @@ router.post('/logar', async(req, res) => {
     if (!senha) {
         return res.status(422).json({msg: 'A senha é obrigatória'})
     }
+
     // checando se usuário existe
     let user = await Person.findOne({email: email})
     if (!user) {
@@ -185,10 +190,32 @@ router.post('/logar', async(req, res) => {
     // }
     try {
         let id = await user._id
-        res.redirect(`/path/minha-conta/${id}`)
+
+        // if admin
+        if (email == admin_email) {
+            res.redirect(`/path/admin/${id}`)
+        } else {
+            res.redirect(`/path/minha-conta/${id}`)
+        }
     } catch (error) {
         console.log(error)
         res.status(500).json({msg: 'Erro no servidor, tente novamente'})
+    }
+})
+
+// READ ONE ADMIN
+router.get("/admin/:id", async (req, res) => {
+    let id = req.params.id
+    let person = await Person.findOne({_id: id})
+    res.render('admin', {user: person})
+})
+// recuperando todas as denúncias
+router.get("/denuncias-admin/:id", async (req, res) => {
+    try {
+        let denuncias = await Denuncia.find()
+        res.render('denuncias-admin', {denunciasLista:denuncias})
+    } catch (err) {
+        console.log(err)
     }
 })
 
@@ -200,7 +227,6 @@ router.get("/minha-conta/:id", async (req, res) => {
     let person = await Person.findOne({_id: id})
     res.render('minha-conta', {user: person})
 })
-
 // READ ALL
 // router.get("/cadastrados", async (req, res) => {
 //     try {

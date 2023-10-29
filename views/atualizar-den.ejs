@@ -6,7 +6,7 @@
     <title>Zoon</title>
     <link rel="stylesheet" href="/css/config-geral.css">
     <link rel="stylesheet" href="/css/autenticacao.css">
-    <script src="/js/telefoneCad.js" defer></script>
+    <script src="/js/script.js" defer></script>
 </head>
 <body>
     <!-- gambiarra? -->
@@ -24,48 +24,43 @@
     <div class="espaco"></div>
     <main>
         <section>
-            <h2>Cadastrar</h2>
+            <h2>Denúncia</h2>
             <div id="main-container">
-                <form id="register-form" class="container" method="post" action="/path/cadastrar">
+                <form id="register-form" class="container" method="post" action="/path/atualizar-den/:id">
+
+                    <p><strong>E-mail:</strong> <%=denuncia.email%> </p>
+                    <p><strong>Motivo:</strong> <%=denuncia.motivo%> </p>
+                    <p><strong>Relato:</strong> <%=denuncia.relato%> </p>
+                    <p>
+                        <strong>Endereço:</strong><br>
+                        cep: <%=denuncia.cep%> <br>
+                        estado: <%=denuncia.estado%> <br>
+                        cidade: <%=denuncia.cidade%> <br>
+                        bairro: <%=denuncia.bairro%> <br>
+                        rua: <%=denuncia.rua%> <br>
+                        complemento: <%=denuncia.complemento%> <br>
+                        numero: <%=denuncia.numero%>
+                    </p>
+                    <p><strong>Data de Denúncia:</strong> <%=denuncia.data%> </p>
                     
-                    <!-- div que ocupa a width inteira do main-container -->
-                    <!-- <div class="full-box"> -->
-                    <div class="half-box spacing">
-                        <label for="email">E-mail</label>
-                        <!-- name tem que ser igual o for ("esta label é para o email") -->
-                        <input type="email" name="email" id="email" placeholder="Digite seu e-mail">
-                    </div>
+                    <br>
                     
-                    <!-- ocupa metade da width do main-container -->
-                    <div class="half-box spacing">
-                        <label for="nome">Nome</label>
-                        <input type="text" name="nome" id="nome" placeholder="Digite seu nome">
-                    </div>
-                    
-                    <div class="half-box">
-                        <label for="sobrenome">Sobrenome</label>
-                        <input type="text" name="sobrenome" id="sobrenome" placeholder="Digite seu sobrenome">
-                    </div>
-                    
-                    <div class="half-box">
-                        <label for="tel">Telefone</label>
-                        <input type="text" name="tel" id="tel" placeholder="Digite seu telefone" minlength="14" maxlength="15">
-                    </div>
-                    
-                    <div class="half-box spacing">
-                        <label for="senha">Senha</label>
-                        <input type="password" name="senha" id="senha" placeholder="Digite sua senha" minlength="8">
-                    </div>
-                    
-                    <div class="half-box">
-                        <label for="confSenha">Confirmação de senha</label>
-                        <input type="password" name="confSenha" id="confSenha" placeholder="Confirme sua senha" minlength="8">
-                    </div>
+                    <p><strong>Status:</strong> <%=denuncia.status%> </p>
+                    <select name="novoStatus" id="novoStatus">
+                        <option value="" disabled selected>Selecione</option>
+                        <option value="Enviado para análise">Enviado para análise</option>
+                        <option value="Em andamento">Em andamento</option>
+                        <option value="Finalizado">Finalizado</option>
+                        <option value="Cancelado">Cancelado</option>
+                    </select>
+
+                    <br>
                     
                     <div class="btns">
                         <div class="btns-action">
-                            <a href="/">Voltar</a>
-                            <input type="submit" id="btn-submit" value="Cadastrar">
+                            <a href="/path/denuncias-admin/<%=denuncia._id%>">Voltar</a>
+                            <input type="submit" value="Atualizar">
+                            <input type="hidden" name="denuncia_id" value="<%=denuncia._id%>">
                         </div>
                     </div>
                 </form>

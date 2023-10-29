@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt')
 require('dotenv').config()
 const router = require('express').Router()
+require('dotenv').config()
 // importando Person
 const Person = require('../models/Person')
 // importando Denuncia
@@ -32,6 +33,8 @@ router.post("/denunciar", async (req, res) => {
     let mes = date.getMonth()+1
     let ano = date.getFullYear()
     let data = `${dia}/${mes}/${ano}`
+
+    let status = 'Enviado para análise'
 
     // validações
     if (!motivo) {
@@ -71,13 +74,15 @@ router.post("/denunciar", async (req, res) => {
         complemento,
         numero,
         email,
-        data
+        data,
+        status
     })
     await newDenuncia.save()
+
     if (email == "Anônimo") {
         res.redirect("/path/ver-denuncias")
     } else {
-        res.redirect("/")
+        res.redirect("/path/ver-minha-den")
     }
 })
 
@@ -116,6 +121,37 @@ router.post("/ver-minha-den", async (req, res) => {
         res.render('minhas-denuncias', {denunciasList:denuncias})
     } catch (err) {
         console.log(err)
+    }
+})
+
+
+
+// UPDATE DENÚNCIAS
+router.get("/atualizar-den/:id", async (req, res) => {
+    let id = req.params.id
+    let denuncia = await Denuncia.findOne({_id: id})
+    res.render('atualizar-den', {denuncia: denuncia})
+})
+// atualizando dado
+router.post('/atualizar-den/:id', async (req, res) => {
+    let id = req.body.denuncia_id
+
+    let status = req.body.novoStatus
+
+    try {
+        let updatedDenuncia = await Denuncia.findByIdAndUpdate({_id: id}, {
+            $set: {
+                status
+            }
+        })
+        if (updatedDenuncia.matchedCount === 0) {
+            res.status(422).json({msg: 'Denúncia não encontrada'})
+            return
+        }
+        const admin_id = process.env.ADMIN_ID
+        res.redirect(`/path/denuncias-admin/${admin_id}`)
+    } catch (error) {
+        res.status(500).json({msg: 'Erro no servidor, tente novamente'})
     }
 })
 

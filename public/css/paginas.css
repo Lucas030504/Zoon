@@ -7,13 +7,6 @@
 }
 
 /* páginas de notícias e zoonoses */
-section ul {
-    margin: 0 0 1.5rem 3rem;
-}
-section li {
-    list-style-type: disc;
-}
-
 .titulo-referencia {
     width: 100%;
     display: flex;
@@ -34,22 +27,6 @@ section li {
 .titulo-referencia .referencia a:hover {
     border-bottom: 2px solid var(--color-gold);
 }
-/* .lista-ancoras {
-    width: 222px;
-    background-color: var(--color-dark2);
-    border-radius: .5rem;
-    margin: 0 auto 1rem;
-    padding: 1.4rem 1.4rem .1rem 0;
-    position: absolute;
-    right: 0px;
-}
-.lista-ancoras a {
-    color: var(--color-dark1);
-    font-weight: bold;
-}
-.lista-ancoras a:hover {
-    border-bottom: 2px solid var(--color-gold);
-} */
 
 .conteudo-imagem img {
     width: 50%;
@@ -60,6 +37,6 @@ section li {
 .conteudo-texto p, .conteudo-texto h3 {
     margin-bottom: 30px;
 }
-.conteudo-texto h3 {
-    border-bottom: 2px solid var(--color-gold);
+section ul {
+    margin-left: 50px;
 }

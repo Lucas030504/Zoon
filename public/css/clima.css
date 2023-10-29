@@ -10,13 +10,13 @@
 /* API */
 .container {
     text-align: center;
-    padding: 2rem;
-    margin: 30px auto;
+    padding: 30px;
+    margin: -30px auto 0;
     width: 400px;
-    border-radius: 1rem;
-    background-color: silver;
+    border-radius: 10px;
+    background-color: rgb(220, 220, 220);
 }
-.container h2 {
+.container h3 {
     text-align: center;
     width: fit-content;
     margin: 0 auto;
@@ -27,26 +27,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: .5rem;
+    gap: 10px;
 }
 #city-input {
-    margin: 1rem 0;
-    padding: .3rem;
+    margin: 10px 0;
+    padding: 8px 8px 10px;
     border-style: none;
-    border-radius: .5rem;
+    border-radius: 10px;
 }
 #search {
-    padding: .3rem;
+    padding: 8px 8px 10px;
     border-style: none;
-    border-radius: .5rem;
+    border-radius: 10px;
+    cursor: pointer;
 }
-.cidade-pais h3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: .5rem;
-    margin: 1rem auto;
+.cidade-pais h4 {
+    margin: 10px auto;
     width: fit-content;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 /* tamanho da bandeira */
 #country {
@@ -61,8 +63,8 @@
 }
 #description-container {
     width: fit-content;
-    padding-left: 1rem;
-    margin-bottom: 1rem;
+    padding-left: 20px;
+    margin-bottom: 20px;
 }
 #description {
     text-transform: capitalize;
@@ -73,30 +75,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem;
+    gap: 20px;
     width: fit-content;
     margin: 0 auto;
-    background-color: var(--color-dark2);
-    padding: .5rem;
-    border-radius: .5rem;
-}
-
-
-
-/* responsividade */
-@media screen and (max-width: 650px) {
-    .container {
-        width: 300px;
-    }
-    #details-container {
-        gap: .5rem;
-    }
-}
-@media screen and (max-width: 450px) {
-    .container {
-        width: 200px;
-    }
-    .form-input-container {
-        width: 200px;
-    }
+    background-color: rgb(200, 200, 200);
+    padding: 10px 30px;
+    border-radius: 10px;
 }

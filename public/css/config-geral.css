@@ -99,11 +99,15 @@ h3 {
 }
 main {
     width: 900px;
+    min-height: 500px;
     margin: 60px auto 0;
 }
 section {
     min-height: 300px;
     margin-bottom: 50px;
+}
+article {
+    margin-bottom: 30px;
 }
 
 

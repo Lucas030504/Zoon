@@ -10,9 +10,6 @@
     box-sizing: border-box;
     border: none;
 }
-a {
-    text-decoration: none;
-}
 
 
 
@@ -31,7 +28,7 @@ input:focus, label:focus {
 /* form */
 #main-container {
     width: 500px;
-    margin: 1.5rem auto;
+    margin: 50px auto 0;
     background-color: var(--color-dark2);
     border-radius: 10px;
     padding: 25px;
@@ -69,10 +66,19 @@ input {
 input:focus {
     border-bottom-color: var(--color-gold);
 }
+select {
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
 .info {
+    margin: -6px 0 22px;
     font-size: 14px;
     opacity: .6;
-    margin: -6px 0 22px;
+}
+.info a {
+    color: blue;
 }
 .btns {
     width: 100%;
@@ -92,7 +98,7 @@ input:focus {
     font-size: 15px;
     border-radius: 10px;
     cursor: pointer;
-    padding: 10px;
+    padding: 10px 10px 12px;
     text-align: center;
 }
 .btns-action input[type=submit] {
@@ -103,7 +109,7 @@ input:focus {
     font-size: 15px;
     border-radius: 10px;
     cursor: pointer;
-    padding: 10px;
+    padding: 10px 10px 12px;
     margin-top: 10px;
     border-bottom: none;
 }
@@ -118,9 +124,9 @@ input:focus {
 .usuarios {
     background-color: var(--color-dark2);
     width: 500px;
-    margin: 0 auto 12px;
-    border-radius: 1em;
-    padding: 1em;
+    margin: 50px auto;
+    border-radius: 10px;
+    padding: 15px 15px 20px;
 }
 .usuarios a {
     margin-right: 12px;
@@ -132,29 +138,4 @@ input:focus {
 .usuarios p {
     margin-bottom: 24px;
     text-align: left;
-}
-
-
-
-/* responsividade */
-@media screen and (max-width: 850px) {
-    .usuarios {
-        width: 97%;
-    }
-}
-@media screen and (max-width: 650px) {
-    #main-container {
-        width: 400px;
-    }
-    .half-box {
-        flex: 1 1 100%;
-    }
-    .spacing {
-        margin-right: 0;
-    }
-}
-@media screen and (max-width: 450px) {
-    #main-container {
-        width: 250px;
-    }
 }

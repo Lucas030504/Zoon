@@ -6,7 +6,7 @@
     <title>Zoon</title>
     <link rel="stylesheet" href="/css/config-geral.css">
     <link rel="stylesheet" href="/css/autenticacao.css">
-    <script src="/js/telefoneCad.js" defer></script>
+    <script src="/js/script.js" defer></script>
 </head>
 <body>
     <!-- gambiarra? -->
@@ -24,52 +24,17 @@
     <div class="espaco"></div>
     <main>
         <section>
-            <h2>Cadastrar</h2>
-            <div id="main-container">
-                <form id="register-form" class="container" method="post" action="/path/cadastrar">
-                    
-                    <!-- div que ocupa a width inteira do main-container -->
-                    <!-- <div class="full-box"> -->
-                    <div class="half-box spacing">
-                        <label for="email">E-mail</label>
-                        <!-- name tem que ser igual o for ("esta label é para o email") -->
-                        <input type="email" name="email" id="email" placeholder="Digite seu e-mail">
-                    </div>
-                    
-                    <!-- ocupa metade da width do main-container -->
-                    <div class="half-box spacing">
-                        <label for="nome">Nome</label>
-                        <input type="text" name="nome" id="nome" placeholder="Digite seu nome">
-                    </div>
-                    
-                    <div class="half-box">
-                        <label for="sobrenome">Sobrenome</label>
-                        <input type="text" name="sobrenome" id="sobrenome" placeholder="Digite seu sobrenome">
-                    </div>
-                    
-                    <div class="half-box">
-                        <label for="tel">Telefone</label>
-                        <input type="text" name="tel" id="tel" placeholder="Digite seu telefone" minlength="14" maxlength="15">
-                    </div>
-                    
-                    <div class="half-box spacing">
-                        <label for="senha">Senha</label>
-                        <input type="password" name="senha" id="senha" placeholder="Digite sua senha" minlength="8">
-                    </div>
-                    
-                    <div class="half-box">
-                        <label for="confSenha">Confirmação de senha</label>
-                        <input type="password" name="confSenha" id="confSenha" placeholder="Confirme sua senha" minlength="8">
-                    </div>
-                    
-                    <div class="btns">
-                        <div class="btns-action">
-                            <a href="/">Voltar</a>
-                            <input type="submit" id="btn-submit" value="Cadastrar">
-                        </div>
-                    </div>
-                </form>
-            </div>
+            <h2>Gerenciar Denúncias:</h2>
+            <%denunciasLista.forEach((denuncia) => {%>
+                <div class="usuarios">
+                    <p><strong>Usuário:</strong> <%=denuncia.email%> </p>
+                    <p><strong>Motivo:</strong> <%=denuncia.motivo%> </p>
+                    <p><strong>Relato:</strong> <%=denuncia.relato%> </p>
+                    <p><strong>Data:</strong> <%=denuncia.data%> </p>
+                    <p><strong>Status:</strong> <%=denuncia.status%> </p>
+                    <a href="/path/atualizar-den/<%=denuncia._id%>">Gerenciar</a>
+                </div>
+            <%})%>
         </section>
     </main>
 
