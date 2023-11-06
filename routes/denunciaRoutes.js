@@ -82,7 +82,9 @@ router.post("/denunciar", async (req, res) => {
     if (email == "Anônimo") {
         res.redirect("/path/ver-denuncias")
     } else {
-        res.redirect("/path/ver-minha-den")
+        // res.redirect("/path/ver-minha-den")
+        let denuncias = await Denuncia.find({email:email})
+        res.render('minhas-denuncias', {denunciasList:denuncias})
     }
 })
 
