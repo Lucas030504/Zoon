@@ -28,30 +28,40 @@
             <div id="main-container">
                 <form id="register-form" class="container" method="post" action="/path/atualizar/:id">
                     
-                    <div class="half-box spacing">
+                    <!-- <div>
                         <label for="novoEmail">E-mail</label>
-                        <!-- name tem que ser igual o for ("esta label é para o email") -->
                         <input type="email" name="novoEmail" id="novoEmail" value="<%=person.email%>" required>
-                    </div>
+                    </div> -->
                     
-                    <div class="half-box spacing">
+                    <div>
                         <label for="novoNome">Nome</label>
+                        <!-- name tem que ser igual o for ("esta label é para o email") -->
                         <input type="text" name="novoNome" id="novoNome" value="<%=person.nome%>">
                     </div>
                     
-                    <div class="half-box">
+                    <div>
                         <label for="novoSobrenome">Sobrenome</label>
                         <input type="text" name="novoSobrenome" id="novoSobrenome" value="<%=person.sobrenome%>">
                     </div>
                     
-                    <div class="half-box">
+                    <div>
                         <label for="novoTel">Telefone</label>
                         <input type="text" name="novoTel" id="novoTel" value="<%=person.tel%>" minlength="13" maxlength="14">
                     </div>
                     
+                    <!-- <div>
+                        <label for="senhaAntiga">Senha Antiga</label>
+                        <input type="text" name="senhaAntiga" id="senhaAntiga">
+                    </div>
+                    
+                    <div>
+                        <label for="senhaNova">Senha Nova</label>
+                        <input type="text" name="senhaNova" id="senhaNova">
+                    </div> -->
+                    
                     <div class="btns">
                         <div class="btns-action">
-                            <a href="/path/minha-conta/<%=person._id%>">Voltar</a>
+                            <a href="/">Cancelar</a>
                             <input type="submit" value="Atualizar">
                             <input type="hidden" name="person_id" value="<%=person._id%>">
                         </div>

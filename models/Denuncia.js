@@ -11,6 +11,7 @@ const Denuncia = mongoose.model('Denuncia', {
     complemento: String,
     numero: String,
     email: String,
+    id_usuario: String,
     // anexo: File
     data: String,
     status: String

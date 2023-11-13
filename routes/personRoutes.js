@@ -192,7 +192,7 @@ router.post('/logar', async(req, res) => {
         let id = await user._id
 
         // if admin
-        if (email == admin_email) {
+        if (email === admin_email) {
             res.redirect(`/path/admin/${id}`)
         } else {
             res.redirect(`/path/minha-conta/${id}`)
@@ -249,7 +249,7 @@ router.get("/atualizar/:id", async (req, res) => {
 router.post('/atualizar/:id', async (req, res) => {
     let id = req.body.person_id
 
-    let email = req.body.novoEmail
+    // let email = req.body.novoEmail
     let nome = req.body.novoNome
     let sobrenome = req.body.novoSobrenome
     let tel = req.body.novoTel
@@ -257,7 +257,7 @@ router.post('/atualizar/:id', async (req, res) => {
     try {
         let updatedPerson = await Person.findByIdAndUpdate({_id: id}, {
             $set: {
-                email,
+                // email,
                 nome,
                 sobrenome,
                 tel

@@ -47,6 +47,7 @@ router.post("/denunciar", async (req, res) => {
         return res.status(422).json({msg: 'O endereço é obrigatório, digite o cep ou informe o endereço'})
     }
 
+    let id_usuario
     if (email) {
         // checando se usuário existe
         let user = await Person.findOne({email: email})
@@ -58,8 +59,10 @@ router.post("/denunciar", async (req, res) => {
         if (!checkPassword) {
             return res.status(404).json({msg: 'Senha inválida'})
         }
+        id_usuario = user._id
     } else {
         email = "Anônimo"
+        id_usuario = ""
     }
 
     // adicionando no bd
@@ -74,6 +77,7 @@ router.post("/denunciar", async (req, res) => {
         complemento,
         numero,
         email,
+        id_usuario,
         data,
         status
     })
@@ -82,9 +86,7 @@ router.post("/denunciar", async (req, res) => {
     if (email == "Anônimo") {
         res.redirect("/path/ver-denuncias")
     } else {
-        // res.redirect("/path/ver-minha-den")
-        let denuncias = await Denuncia.find({email:email})
-        res.render('minhas-denuncias', {denunciasList:denuncias})
+        res.redirect(`/path/minhas-denuncias/${id_usuario}`)
     }
 })
 
@@ -118,12 +120,20 @@ router.post("/ver-minha-den", async (req, res) => {
         return res.status(404).json({msg: 'Senha inválida'})
     }
 
+    let id_usuario = user._id
     try {
-        let denuncias = await Denuncia.find({email:email})
-        res.render('minhas-denuncias', {denunciasList:denuncias})
+        res.redirect(`/path/minhas-denuncias/${id_usuario}`)
     } catch (err) {
         console.log(err)
     }
+})
+
+
+
+router.get("/minhas-denuncias/:id", async(req,res) => {
+    let id = req.params.id
+    let denuncias = await Denuncia.find({id_usuario:id})
+    res.render('minhas-denuncias', {denuncias:denuncias})
 })
 
 
@@ -137,7 +147,6 @@ router.get("/atualizar-den/:id", async (req, res) => {
 // atualizando dado
 router.post('/atualizar-den/:id', async (req, res) => {
     let id = req.body.denuncia_id
-
     let status = req.body.novoStatus
 
     try {
@@ -150,6 +159,7 @@ router.post('/atualizar-den/:id', async (req, res) => {
             res.status(422).json({msg: 'Denúncia não encontrada'})
             return
         }
+
         const admin_id = process.env.ADMIN_ID
         res.redirect(`/path/denuncias-admin/${admin_id}`)
     } catch (error) {
