@@ -35,6 +35,7 @@ router.post("/denunciar", async (req, res) => {
     let data = `${dia}/${mes}/${ano}`
 
     let status = 'Enviado para análise'
+    let status_motivo = ""
 
     // validações
     if (!motivo) {
@@ -79,7 +80,8 @@ router.post("/denunciar", async (req, res) => {
         email,
         id_usuario,
         data,
-        status
+        status,
+        status_motivo
     })
     await newDenuncia.save()
 
@@ -148,11 +150,13 @@ router.get("/atualizar-den/:id", async (req, res) => {
 router.post('/atualizar-den/:id', async (req, res) => {
     let id = req.body.denuncia_id
     let status = req.body.novoStatus
+    let status_motivo = req.body.status_motivo
 
     try {
         let updatedDenuncia = await Denuncia.findByIdAndUpdate({_id: id}, {
             $set: {
-                status
+                status,
+                status_motivo
             }
         })
         if (updatedDenuncia.matchedCount === 0) {

@@ -45,14 +45,17 @@
                     
                     <br>
                     
-                    <p><strong>Status:</strong> <%=denuncia.status%> </p>
+                    <p><strong>Status atual:</strong> <%=denuncia.status%> </p>
                     <select name="novoStatus" id="novoStatus">
-                        <option value="" disabled selected>Selecione</option>
+                        <option value="" disabled selected>Novo status</option>
                         <option value="Enviado para análise">Enviado para análise</option>
                         <option value="Em andamento">Em andamento</option>
                         <option value="Finalizado">Finalizado</option>
                         <option value="Cancelado">Cancelado</option>
                     </select>
+
+                    <p><strong>Atividade atual:</strong> <%=denuncia.status_motivo%> </p>
+                    <input type="text" name="status_motivo" id="status_motivo" placeholder="Nova atividade" required>
 
                     <br>
                     
