@@ -19,19 +19,33 @@
         </div>
     </header>
 
-    
+
 
     <div class="espaco"></div>
     <main>
         <section>
-            <h2>Administrador</h2>
+            <div class="links-ger-den">
+                <a href="/path/em-análise">Em análise</a>
+                <a href="/path/em-andamento">Em andamento</a>
+                <a href="/path/finalizados">Finalizados</a>
+                <a href="/path/cancelados">Cancelados</a>
+            </div>
+    
             <div class="espaco"></div>
-                    <div class="usuarios">
-                        <p><strong>E-mail:</strong> <%=user.email%> </p>
-                        <p><strong>Data de Cadastro:</strong> <%=user.data%> </p>
-                        <a href="/path/atualizar/<%=user._id%>">Atualizar</a>
-                        <a href="/path/em-analise">Gerenciar Denúncias</a>
-                    </div>
+
+            <h2>Gerenciar Denúncias - Cancelados:</h2>
+
+            <%denunciasLista.forEach((denuncia) => {%>
+                <div class="usuarios">
+                    <p><strong>Usuário:</strong> <%=denuncia.email%> </p>
+                    <p><strong>Motivo:</strong> <%=denuncia.motivo%> </p>
+                    <p><strong>Relato:</strong> <%=denuncia.relato%> </p>
+                    <p><strong>Data:</strong> <%=denuncia.data%> </p>
+                    <p><strong>Status:</strong> <%=denuncia.status%> </p>
+                    <p><strong>-</strong> <%=denuncia.status_motivo%> </p>
+                    <a href="/path/atualizar-den/<%=denuncia._id%>">Gerenciar</a>
+                </div>
+            <%})%>
         </section>
     </main>
 

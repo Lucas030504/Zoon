@@ -93,6 +93,47 @@ router.post("/denunciar", async (req, res) => {
 })
 
 
+router.get("/em-analise", async (req, res) => {
+    try {
+        let status = "Enviado para análise"
+        let denuncias = await Denuncia.find({status: status})
+        res.render('em-analise', {denunciasLista:denuncias})
+    } catch (err) {
+        console.log(err)
+    }
+})
+
+router.get("/em-andamento", async (req, res) => {
+    try {
+        let status = "Em andamento"
+        let denuncias = await Denuncia.find({status: status})
+        res.render('em-andamento', {denunciasLista:denuncias})
+    } catch (err) {
+        console.log(err)
+    }
+})
+
+router.get("/finalizados", async (req, res) => {
+    try {
+        let status = "Finalizado"
+        let denuncias = await Denuncia.find({status: status})
+        res.render('finalizados', {denunciasLista:denuncias})
+    } catch (err) {
+        console.log(err)
+    }
+})
+
+router.get("/cancelados", async (req, res) => {
+    try {
+        let status = "Cancelado"
+        let denuncias = await Denuncia.find({status: status})
+        res.render('cancelados', {denunciasLista:denuncias})
+    } catch (err) {
+        console.log(err)
+    }
+})
+
+
 
 // recuperando denúncias anônimas
 router.get("/ver-denuncias", async (req, res) => {
@@ -132,7 +173,7 @@ router.post("/ver-minha-den", async (req, res) => {
 
 
 
-router.get("/minhas-denuncias/:id", async(req,res) => {
+router.get("/minhas-denuncias/:id", async(req, res) => {
     let id = req.params.id
     let denuncias = await Denuncia.find({id_usuario:id})
     res.render('minhas-denuncias', {denuncias:denuncias})
@@ -164,8 +205,7 @@ router.post('/atualizar-den/:id', async (req, res) => {
             return
         }
 
-        const admin_id = process.env.ADMIN_ID
-        res.redirect(`/path/denuncias-admin/${admin_id}`)
+        res.redirect(`/path/em-analise`)
     } catch (error) {
         res.status(500).json({msg: 'Erro no servidor, tente novamente'})
     }

@@ -142,3 +142,17 @@ footer {
     width: 100%;
     border-bottom: 2px solid var(--color-gold);
 }
+
+
+
+/* links gerenciamento de denúncias */
+.links-ger-den {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.links-ger-den a {
+    background-color: var(--color-gold);
+    padding: 5px;
+    border-radius: 5px;
+}

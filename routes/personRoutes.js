@@ -209,15 +209,6 @@ router.get("/admin/:id", async (req, res) => {
     let person = await Person.findOne({_id: id})
     res.render('admin', {user: person})
 })
-// recuperando todas as denúncias
-router.get("/denuncias-admin/:id", async (req, res) => {
-    try {
-        let denuncias = await Denuncia.find()
-        res.render('denuncias-admin', {denunciasLista:denuncias})
-    } catch (err) {
-        console.log(err)
-    }
-})
 
 
 
