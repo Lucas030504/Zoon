@@ -152,7 +152,11 @@ footer {
     justify-content: space-between;
 }
 .links-ger-den a {
-    background-color: var(--color-gold);
-    padding: 5px;
+    border: 2px solid var(--color-gold);
     border-radius: 5px;
+    padding: 5px;
+    transition: .5s;
+}
+.links-ger-den a:hover {
+    background-color: var(--color-gold);
 }
