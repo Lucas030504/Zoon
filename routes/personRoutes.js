@@ -258,7 +258,12 @@ router.post('/atualizar/:id', async (req, res) => {
             res.status(422).json({msg: 'Usuário não encontrado'})
             return
         }
-        res.redirect(`/path/minha-conta/${id}`)
+        let pessoa = await Person.findOne({_id:id})
+        if (pessoa.email == admin_email) {
+            res.redirect(`/path/admin/${id}`)
+        } else {
+            res.redirect(`/path/minha-conta/${id}`)
+        }
     } catch (error) {
         res.status(500).json({msg: 'Erro no servidor, tente novamente'})
     }
